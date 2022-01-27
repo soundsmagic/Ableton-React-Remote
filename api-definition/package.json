@@ -1,0 +1,14 @@
+{
+  "name": "api-definition",
+  "version": "1.0.0",
+  "description": "MYOW Ableton Live Python API definition",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "openapi"
+  ],
+  "author": "John Svensson",
+  "license": "ISC"
+}

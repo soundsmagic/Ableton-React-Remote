@@ -1,0 +1,7 @@
+node_modules/
+dist/openapi.json
+dist/openapi.yaml
+generated/
+doc/*.css
+doc/*.css.map
+doc/*.js
