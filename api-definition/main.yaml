@@ -1,0 +1,25 @@
+openapi: 3.1.0
+info:
+  title: CYOW Remote Live App Python API
+  version: 1.0.0
+  description: 
+    $ref: './intro.md'
+  contact:
+    name: JS
+
+tags:
+  - name: Song
+    description: 'Operations regarding the global song.'
+  - name: Scene
+    description: 'Operations regarding the scenes in the song.'
+  - name: Tracks    
+    description: 'Operations regarding the tracks in the song.'
+
+components:
+  schemas:
+
+  parameters:
+
+  reponses:
+
+paths:

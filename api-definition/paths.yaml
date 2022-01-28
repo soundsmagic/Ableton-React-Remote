@@ -1,0 +1,4 @@
+---
+/scene:
+  get:
+    $ref: '/paths/scene/read.yaml'

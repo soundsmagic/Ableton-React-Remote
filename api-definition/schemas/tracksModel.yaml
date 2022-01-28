@@ -1,0 +1,10 @@
+---
+tracksModel:
+  type: object
+  properties:
+    trackName:
+      type: string
+      example: 'Rhodes'
+    muted:
+      type: boolean
+      example: false

@@ -1,0 +1,9 @@
+---
+sceneModel:
+  type: object
+  required: 
+    - sceneName
+  properties:
+    sceneName:
+      type: string
+      example: 'Intro'

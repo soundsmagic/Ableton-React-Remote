@@ -1,0 +1,1 @@
+Definition for the CYOW Remote Live App API that is served by the custom MIDI Remote Pyhton script, and that exposes the Ableton Live Control Surface API.
