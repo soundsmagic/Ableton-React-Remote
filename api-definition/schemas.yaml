@@ -2,3 +2,7 @@
 schemas:
   sceneModel:
     '$ref': schemas/sceneModel.yaml
+  trackModel:
+    '$ref': schemas/trackModel.yaml
+  clipModel:
+    '$ref': schemas/clipModel.yaml

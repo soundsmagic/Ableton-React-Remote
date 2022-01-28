@@ -1,7 +1,7 @@
 ---
-sceneModel:
+clipModel:
   type: object
   properties:
-    sceneName:
+    clipName:
       type: string
-      example: 'Intro'
+      example: 'Tambourine'

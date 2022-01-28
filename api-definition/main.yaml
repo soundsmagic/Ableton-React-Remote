@@ -12,8 +12,10 @@ tags:
     description: 'Operations regarding the global song.'
   - name: Scene
     description: 'Operations regarding the scenes in the song.'
-  - name: Tracks    
+  - name: Track    
     description: 'Operations regarding the tracks in the song.'
+  - name: Clip
+    description: 'Operations regarding clips.'
 
 components:
   schemas:

@@ -5,3 +5,9 @@
 /scene/{sceneName}/launch:
   get:
     $ref: '/paths/scene/launch.yaml'
+/track:
+  get:
+    $ref: '/paths/track/read.yaml'
+/track/{trackName}/clip:
+  get:
+    $ref: '/paths/track/clip/read.yaml'
