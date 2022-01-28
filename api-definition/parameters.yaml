@@ -5,3 +5,19 @@ sceneName:
   description: "The textual name of the scene."
   schema:
     type: string
+
+trackName:
+  in: path
+  name: trackName
+  required: true
+  description: "The textual name of the track."
+  schema:
+    type: string
+
+clipName:
+  in: path
+  name: clipName
+  required: true
+  description: "The textual name of the clip."
+  schema:
+    type: string

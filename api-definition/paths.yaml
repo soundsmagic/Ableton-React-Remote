@@ -11,3 +11,6 @@
 /track/{trackName}/clip:
   get:
     $ref: '/paths/track/clip/read.yaml'
+/track/{trackName}/clip/{clipName}/launch:
+  get:
+    $ref: '/paths/track/clip/launch.yaml'
