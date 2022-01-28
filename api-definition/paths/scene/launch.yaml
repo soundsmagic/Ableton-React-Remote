@@ -1,0 +1,12 @@
+---
+tags:
+  - Scene
+summary: 'Launch the supplied scene.'
+parameters:
+  - $ref: '../../parameters.yaml#sceneName'
+operationId: launchScene
+responses:
+  '200':
+    description: 'Scene launched.'
+  '500':
+    $ref: '../../responses.yaml#500'

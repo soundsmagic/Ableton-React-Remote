@@ -1,0 +1,7 @@
+sceneName:
+  in: path
+  name: sceneName
+  required: true
+  description: "The textual name of the scene."
+  schema:
+    type: string

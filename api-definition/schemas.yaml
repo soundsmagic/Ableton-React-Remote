@@ -1,3 +1,4 @@
 ---
 schemas:
-  
+  sceneModel:
+    '$ref': schemas/sceneModel.yaml

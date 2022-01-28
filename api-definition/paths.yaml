@@ -2,3 +2,6 @@
 /scene:
   get:
     $ref: '/paths/scene/read.yaml'
+/scene/{sceneName}/launch:
+  get:
+    $ref: '/paths/scene/launch.yaml'

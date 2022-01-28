@@ -2,7 +2,7 @@
 tags:
   - Scene
 summary: 'Get a list containing the current scenes.'
-operationId: getScenes
+operationId: getSceneList
 responses:
   '200':
     description: 'Scenes fetched.'
@@ -12,4 +12,6 @@ responses:
           type: array
           items:
             $ref: '../../schemas.yaml#sceneModel'
+  '500':
+    $ref: '../../responses.yaml#500'
           
