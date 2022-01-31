@@ -1,0 +1,7 @@
+---
+errorModel:
+  type: object
+  properties:
+    detail:
+      type: string
+      example: "Some details about the specific problem"
