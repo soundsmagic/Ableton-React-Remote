@@ -11,6 +11,6 @@ responses:
         schema:
           type: array
           items:
-            $ref: '../../schemas.yaml#trackModel'
+            $ref: '../../schemas.yaml#/schemas/trackModel'
   '500':
-    $ref: '../../responses.yaml#500'
+    $ref: '../../responses.yaml#/500'

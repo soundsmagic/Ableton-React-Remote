@@ -4,4 +4,4 @@ errorModel:
   properties:
     detail:
       type: string
-      example: "Some details about the specific problem"
+      example: 'Some details about the specific problem'

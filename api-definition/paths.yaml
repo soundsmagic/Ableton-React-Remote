@@ -1,19 +1,18 @@
----
 /scene:
   get:
-    $ref: '/paths/scene/read.yaml'
+    $ref: './paths/scene/read.yaml'
 /scene/{sceneName}/launch:
   get:
-    $ref: '/paths/scene/launch.yaml'
+    $ref: './paths/scene/launch.yaml'
 /track:
   get:
-    $ref: '/paths/track/read.yaml'
+    $ref: './paths/track/read.yaml'
 /track/{trackName}/clip:
   get:
-    $ref: '/paths/track/clip/read.yaml'
+    $ref: './paths/track/clip/read.yaml'
 /track/{trackName}/clip/{clipName}/launch:
   get:
-    $ref: '/paths/track/clip/launch.yaml'
+    $ref: './paths/track/clip/launch.yaml'
 /track/{trackName}/mute:
   get:
-    $ref: '/paths/track/toggleMute.yaml'
+    $ref: './paths/track/toggleMute.yaml'

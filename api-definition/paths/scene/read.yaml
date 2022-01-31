@@ -11,7 +11,7 @@ responses:
         schema:
           type: array
           items:
-            $ref: '../../schemas.yaml#sceneModel'
+            $ref: '../../schemas.yaml#/schemas/sceneModel'
   '500':
-    $ref: '../../responses.yaml#500'
+    $ref: '../../responses.yaml#/500'
           

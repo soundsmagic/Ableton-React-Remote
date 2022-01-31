@@ -4,11 +4,17 @@
   "description": "MYOW Ableton Live Python API definition",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "validate": "swagger-cli validate main.yaml",
+    "bundle": "npm run bundle:json",
+    "bundle:json": "swagger-cli bundle -t json -w 300 main.yaml > dist/openapi.json",
+    "bundle:yaml": "swagger-cli bundle -t yaml -w 300 main.yaml > dist/openapi.yaml"
   },
   "keywords": [
     "openapi"
   ],
   "author": "John Svensson",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@apidevtools/swagger-cli": "4.0.4"
+  }
 }

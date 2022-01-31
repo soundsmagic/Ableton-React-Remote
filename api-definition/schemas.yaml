@@ -1,8 +1,8 @@
 ---
 schemas:
   sceneModel:
-    '$ref': schemas/sceneModel.yaml
+    '$ref': ./schemas/sceneModel.yaml
   trackModel:
-    '$ref': schemas/trackModel.yaml
+    '$ref': ./schemas/trackModel.yaml
   clipModel:
-    '$ref': schemas/clipModel.yaml
+    '$ref': ./schemas/clipModel.yaml

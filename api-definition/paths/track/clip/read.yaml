@@ -11,6 +11,6 @@ responses:
         schema:
           type: array
           items:
-            $ref: '../../../schemas.yaml#clipModel'
+            $ref: '../../../schemas.yaml#/schemas/clipModel'
   '500':
-    $ref: '../../responses.yaml#500'
+    $ref: '../../../responses.yaml#/500'
