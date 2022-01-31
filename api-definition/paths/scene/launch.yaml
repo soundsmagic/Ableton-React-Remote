@@ -2,9 +2,9 @@
 tags:
   - Scene
 summary: 'Launch the supplied scene.'
+operationId: launchScene
 parameters:
   - $ref: '../../parameters.yaml#sceneName'
-operationId: launchScene
 responses:
   '200':
     description: 'Scene launched.'

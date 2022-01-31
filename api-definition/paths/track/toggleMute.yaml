@@ -1,0 +1,12 @@
+---
+tags:
+  - Track
+summary: 'Toggle the mute status for the supplied track.'
+operationId: toggleTrackMute
+parameters:
+  - $ref: '../../parameters.yaml#trackName'
+responses:
+  '200':
+    description: 'Mute status toggled.'
+  '500':
+    $ref: '../../responses.yaml#500'

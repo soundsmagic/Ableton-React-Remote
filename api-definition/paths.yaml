@@ -14,3 +14,6 @@
 /track/{trackName}/clip/{clipName}/launch:
   get:
     $ref: '/paths/track/clip/launch.yaml'
+/track/{trackName}/mute:
+  get:
+    $ref: '/paths/track/toggleMute.yaml'
