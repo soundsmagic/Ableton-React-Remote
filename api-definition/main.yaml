@@ -22,7 +22,7 @@ components:
     $ref: './schemas.yaml'
   parameters:
     $ref: './parameters.yaml'
-  reponses:
+  responses:
     $ref: './responses.yaml'
 paths:
   $ref: './paths.yaml'

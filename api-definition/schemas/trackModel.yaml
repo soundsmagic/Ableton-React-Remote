@@ -1,5 +1,5 @@
 ---
-tracksModel:
+trackModel:
   type: object
   properties:
     trackName:

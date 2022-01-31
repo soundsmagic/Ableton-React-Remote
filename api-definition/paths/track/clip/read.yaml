@@ -3,14 +3,16 @@ tags:
   - Clip
 summary: 'Get a list containing the clips for the supplied track.'
 operationId: getTrackClipList
+parameters:
+  - '$ref': '../../../parameters.yaml#/trackName'
 responses:
   '200':
     description: 'Clips fetched.'
-    conent:
+    content:
       application/json:
         schema:
           type: array
           items:
-            $ref: '../../../schemas.yaml#/schemas/clipModel'
+            '$ref': '../../../schemas.yaml#/clipModel'
   '500':
-    $ref: '../../../responses.yaml#/500'
+    '$ref': '../../../responses.yaml#/500'

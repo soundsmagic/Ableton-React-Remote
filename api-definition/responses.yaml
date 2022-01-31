@@ -3,18 +3,18 @@
   content:
     application/json:
       schema:
-        $ref: './schemas/errorModel.yaml'
+        $ref: './schemas/errorModel.yaml#/errorModel'
 
 404:
   description: 'Requested resource not found.'
   content:
     application/json:
       schema:
-        $ref: './schemas/errorModel.yaml'
+        $ref: './schemas/errorModel.yaml#/errorModel'
 
 500:
   description: 'Unknown internal server error.'
   content:
     application/json:
       schema:
-        $ref: './schemas/errorModel.yaml'
+        $ref: './schemas/errorModel.yaml#/errorModel'

@@ -1,8 +1,9 @@
 ---
-schemas:
-  sceneModel:
-    '$ref': ./schemas/sceneModel.yaml
-  trackModel:
-    '$ref': ./schemas/trackModel.yaml
-  clipModel:
-    '$ref': ./schemas/clipModel.yaml
+sceneModel:
+  '$ref': ./schemas/sceneModel.yaml#/sceneModel
+trackModel:
+  '$ref': ./schemas/trackModel.yaml#/trackModel
+clipModel:
+  '$ref': ./schemas/clipModel.yaml#/clipModel
+errorModel:
+  '$ref': ./schemas/errorModel.yaml#/errorModel
