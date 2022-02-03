@@ -6,18 +6,18 @@ sceneName:
   schema:
     type: string
 
-trackName:
+trackIndex:
   in: path
-  name: trackName
+  name: trackIndex
   required: true
-  description: "The textual name of the track."
+  description: "The index of the track."
   schema:
-    type: string
+    type: integer
 
-clipName:
+clipIndex:
   in: path
-  name: clipName
+  name: clipIndex
   required: true
-  description: "The textual name of the clip."
+  description: "The index of the clip on its track."
   schema:
-    type: string
+    type: integer

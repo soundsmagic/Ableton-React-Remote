@@ -1,16 +1,16 @@
 ---
 tags:
   - Track
-summary: 'Get a list containing the current tracks.'
-operationId: getTrackList
+summary: 'Get all properties of the supplied track.'
+operationId: getTrackObject
+parameters:
+  - '$ref': '../../parameters.yaml#/trackIndex'
 responses:
   '200':
-    description: 'Tracks fetched.'
+    description: 'Track object fetched.'
     content:
       application/json:
         schema:
-          type: array
-          items:
-            '$ref': '../../schemas.yaml#/trackModel'
+          '$ref': '../../schemas.yaml#/trackModel'
   '500':
     '$ref': '../../responses.yaml#/500'

@@ -4,15 +4,14 @@
 /scene/{sceneName}/launch:
   get:
     $ref: './paths/scene/launch.yaml'
-/track:
+/tracks:
+  get:
+    $ref: './paths/tracks/read.yaml'
+/track/{trackIndex}:
   get:
     $ref: './paths/track/read.yaml'
-/track/{trackName}/clip:
-  get:
-    $ref: './paths/track/clip/read.yaml'
-/track/{trackName}/clip/{clipName}/launch:
+  patch:
+    $ref: './paths/track/update.yaml'
+/track/{trackIndex}/{clipIndex}/launch:
   get:
     $ref: './paths/track/clip/launch.yaml'
-/track/{trackName}/mute:
-  get:
-    $ref: './paths/track/toggleMute.yaml'

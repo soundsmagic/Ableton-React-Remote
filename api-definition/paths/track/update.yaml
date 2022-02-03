@@ -1,0 +1,18 @@
+---
+tags:
+  - Track
+summary: 'Update one or several of a tracks properties.'
+operationId: updateTrackObject
+parameters:
+  - '$ref': '../../parameters.yaml#/trackIndex'
+responses:
+  '200':
+    description: 'Track updated.'
+  '500':
+    '$ref': '../../responses.yaml#/500'
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        '$ref': '../../schemas.yaml#/trackModel'

@@ -2,9 +2,16 @@
 trackModel:
   type: object
   properties:
+    trackIndex:
+      type: integer
+      example: 5
     trackName:
       type: string
       example: 'Rhodes'
+    clipList:
+      type: array
+      items:
+        '$ref': '../schemas.yaml#/clipModel'
     muted:
       type: boolean
       example: false

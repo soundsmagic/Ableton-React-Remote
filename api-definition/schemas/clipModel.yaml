@@ -2,6 +2,9 @@
 clipModel:
   type: object
   properties:
+    clipIndex:
+      type: integer
+      example: 12
     clipName:
       type: string
       example: 'Tambourine'

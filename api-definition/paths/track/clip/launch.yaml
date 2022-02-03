@@ -4,8 +4,8 @@ tags:
 summary: 'Launch the supplied clip on the supplied track.'
 operationId: launchClip
 parameters:
-  - '$ref': '../../../parameters.yaml#/trackName'
-  - '$ref': '../../../parameters.yaml#/clipName'
+  - '$ref': '../../../parameters.yaml#/trackIndex'
+  - '$ref': '../../../parameters.yaml#/clipIndex'
 responses:
   '200':
     description: 'Clip launched.'
