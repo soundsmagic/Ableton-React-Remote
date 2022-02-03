@@ -2,6 +2,9 @@
 sceneModel:
   type: object
   properties:
+    sceneIndex:
+      type: integer
+      example: 7
     sceneName:
       type: string
       example: 'Intro'

@@ -4,7 +4,7 @@ tags:
 summary: 'Launch the supplied scene.'
 operationId: launchScene
 parameters:
-  - '$ref': '../../parameters.yaml#/sceneName'
+  - '$ref': '../../parameters.yaml#/sceneIndex'
 responses:
   '200':
     description: 'Scene launched.'

@@ -1,8 +1,8 @@
-sceneName:
+sceneIndex:
   in: path
-  name: sceneName
+  name: sceneIndex
   required: true
-  description: "The textual name of the scene."
+  description: "The index of the scene."
   schema:
     type: string
 
