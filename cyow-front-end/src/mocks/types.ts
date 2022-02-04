@@ -14,3 +14,7 @@ export interface Track {
     clipList: Clip[],
     muted: boolean
 }
+
+export interface TrackIndexRequestParam {
+    trackIndex: string
+}
