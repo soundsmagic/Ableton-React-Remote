@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import { mockSceneList, mockTrackList } from './mockData';
+import { Track } from './types';
 
 export const handlers = [
     rest.get('api/scene', (req, res, ctx) => {
@@ -21,17 +22,53 @@ export const handlers = [
             ctx.json(mockTrackList)
         );
     }),
-    rest.get('api/track/:trackIndex', (req, res, ctx) => {
+    rest.get<null, Record<string, string>, Track>('api/track/:trackIndex', (req, res, ctx) => {
         const { trackIndex } = req.params;
+        let index: number;
         try {
-            const index = parseInt(trackIndex)
+            index = parseInt(trackIndex)
         } catch (error) {
-
+            console.log('Wrong format of supplied track index.')
         }
-        const requestedTrackObject = mockTrackList.find(item => item.trackIndex === parseInt(trackIndex))
+        const requestedTrackObject = mockTrackList.find(item => item.trackIndex === index);
+        if (requestedTrackObject) {
+            return res(
+                ctx.status(200),
+                ctx.json(requestedTrackObject)
+            )
+        }
         return res(
-            ctx.status(200),
-            ctx.json()
+            ctx.status(404),
         )
+    }),
+    rest.get<null, Record<string, string>>('api/track/:trackIndex/:clipIndex/launch', (req, res, ctx) => {
+        const { trackIndex, clipIndex } = req.params;
+        let suppliedTrackIndex: number;
+        try {
+            suppliedTrackIndex = parseInt(trackIndex)
+        } catch (error) {
+            console.log('Wrong format of supplied track index.')
+        }
+        const requestedTrackObject = mockTrackList.find(item => item.trackIndex === suppliedTrackIndex);
+        if (requestedTrackObject) {
+            let suppliedClipIndex: number;
+            try {
+                suppliedClipIndex = parseInt(clipIndex)
+            } catch (error) {
+                console.log('Wrong format of supplied track index.')
+            }
+            if (requestedTrackObject.clipList) {
+                const requestedClip = requestedTrackObject.clipList.find(item => item.clipIndex === suppliedClipIndex);
+                if (requestedClip) {
+                    return res(
+                        ctx.status(200),
+                    )
+                } else {
+                    console.log('No clip with that index.')
+                }
+            }
+        } else {
+            console.log('No track with that index.')
+        }
     })
 ]
