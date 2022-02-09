@@ -1,12 +1,12 @@
-import { Grid } from '@mui/material';
 import { SingleTrack } from '../SingleTrack/SingleTrack';
+import { StyledTracksContainer } from './styled';
 
 export const TracksContainer = () => {
     return (
-        <Grid container item xs={8} style={{ 'backgroundColor': 'pink' }}>
-            <SingleTrack />
-            <SingleTrack />
-            <SingleTrack />
-        </Grid>
+        <StyledTracksContainer>
+            <SingleTrack>Track 1</SingleTrack>
+            <SingleTrack>Track 2</SingleTrack>
+            <SingleTrack>Track 3</SingleTrack>
+        </StyledTracksContainer>
     );
 };

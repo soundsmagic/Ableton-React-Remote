@@ -1,9 +1,10 @@
-import { Grid } from '@mui/material';
+import { ReactNode } from 'react';
+import { StyledSingleTrack } from './styled';
 
-export const SingleTrack = () => {
+export const SingleTrack = ({ children }: { children: ReactNode }) => {
     return (
-        <Grid item>
-            SingleTrack
-        </Grid>
+        <StyledSingleTrack>
+            {children}
+        </StyledSingleTrack>
     );
 };

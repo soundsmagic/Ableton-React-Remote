@@ -1,9 +1,12 @@
-import { Grid } from '@mui/material';
+import { SingleScene } from '../SingleScene/SingleScene';
+import { StyledScenesContainer } from './styled';
 
 export const ScenesContainer = () => {
     return (
-        <Grid item xs={4} style={{ 'backgroundColor': 'lightblue' }}>
-            Scenes
-        </Grid>
+        <StyledScenesContainer>
+            <SingleScene>Scene 1</SingleScene>
+            <SingleScene>Scene 2</SingleScene>
+            <SingleScene>Scene 3</SingleScene>
+        </StyledScenesContainer>
     );
 };
