@@ -1,11 +1,11 @@
 import { ClipContainer } from '../ClipContainer/ClipContainer';
 import { MuteButton } from '../MuteButton/MuteButton';
-import { StyledSingleTrack } from './styled';
+import { StyledSingleTrack, StyledTrackHeader } from './styled';
 
 export const SingleTrack = () => {
     return (
         <StyledSingleTrack>
-            <span>Track name</span>
+            <StyledTrackHeader></StyledTrackHeader>
             <ClipContainer />
             <MuteButton />
         </StyledSingleTrack>
