@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { defaultTheme } from '../styling';
 
 export const StyledApp = styled.div`
     height: 100vh;
@@ -6,5 +7,5 @@ export const StyledApp = styled.div`
     flex-direction: row;
     box-sizing: border-box;
     padding: 5%;
-    border: 2px solid black;
+    background-color: ${defaultTheme.colors.mainBackground};
 `;

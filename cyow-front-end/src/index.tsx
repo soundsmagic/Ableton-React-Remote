@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 // import * as serviceWorker from './serviceWorker';
 import { store } from './store/store';
 import App from './app/App';
+import { ThemeWrapper } from './styling';
 
 if (process.env.NODE_ENV === 'development') {
   const { worker } = require('./mocks/browser')
@@ -12,9 +13,11 @@ if (process.env.NODE_ENV === 'development') {
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ThemeWrapper>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeWrapper>
   </React.StrictMode>,
   document.getElementById('root')
 );
