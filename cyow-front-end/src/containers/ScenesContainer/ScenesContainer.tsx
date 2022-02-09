@@ -4,9 +4,15 @@ import { StyledScenesContainer } from './styled';
 export const ScenesContainer = () => {
     return (
         <StyledScenesContainer>
-            <SingleScene>Scene 1</SingleScene>
-            <SingleScene>Scene 2</SingleScene>
-            <SingleScene>Scene 3</SingleScene>
+            <SingleScene>
+                <span>Scene 1</span>
+            </SingleScene>
+            <SingleScene>
+                <span>Scene 2</span>
+            </SingleScene>
+            <SingleScene>
+                <span>Scene 3</span>
+            </SingleScene>
         </StyledScenesContainer>
     );
 };

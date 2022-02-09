@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledSingleScene = styled.div`
-    border: 2px solid green;
+    padding: 1%;
+    margin-bottom: 0.3em;
+    border: ${({ theme }) => `${theme.boundaries.mainBorder} ${theme.colors.mainBorder}`};
+    border-radius: ${({ theme }) => theme.boundaries.mainBorderRadius};
 `;

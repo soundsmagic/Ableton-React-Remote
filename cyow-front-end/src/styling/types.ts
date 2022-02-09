@@ -6,6 +6,7 @@ declare module 'styled-components' {
             mainBackground: string;
             mainBorder: string;
             mainBoxShadow: string;
+            grey1: string;
         };
         boundaries: {
             mainBorder: string;

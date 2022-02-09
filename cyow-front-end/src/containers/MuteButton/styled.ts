@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 
-export const StyledSingleTrack = styled.div`
-    width: 20%;
-    padding: 1%;
-    margin-right: 0.3em;
+export const StyledMuteButton = styled.button`
+    width: 100%;
+    padding: 7% 0%;
+    margin-top: auto;
+    background: ${({ theme }) => theme.colors.grey1};
     border: ${({ theme }) => `${theme.boundaries.mainBorder} ${theme.colors.mainBorder}`};
     border-radius: ${({ theme }) => theme.boundaries.mainBorderRadius};
-    display: flex;
-    flex-direction: column;
 `;

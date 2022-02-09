@@ -1,11 +1,8 @@
 import styled from 'styled-components';
 
-export const StyledSingleTrack = styled.div`
-    width: 20%;
+export const StyledSingleClip = styled.div`
     padding: 1%;
-    margin-right: 0.3em;
+    margin-bottom: 0.3em;
     border: ${({ theme }) => `${theme.boundaries.mainBorder} ${theme.colors.mainBorder}`};
     border-radius: ${({ theme }) => theme.boundaries.mainBorderRadius};
-    display: flex;
-    flex-direction: column;
 `;

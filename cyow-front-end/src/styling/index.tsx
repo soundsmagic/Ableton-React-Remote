@@ -6,12 +6,13 @@ export const defaultTheme: DefaultTheme = {
     colors: {
         mainBackground: '#222',
         mainBorder: '#999',
-        mainBoxShadow: '#666'
+        mainBoxShadow: '#666',
+        grey1: '#aaa'
     },
     boundaries: {
-        mainBorder: '0.05em solid',
-        mainBorderRadius: '0.3em',
-        mainBoxShadow: '0.1em 0.1em 0.15em'
+        mainBorder: '1.5px solid',
+        mainBorderRadius: '4px',
+        mainBoxShadow: '2px 2px 2px'
     }
 }
 

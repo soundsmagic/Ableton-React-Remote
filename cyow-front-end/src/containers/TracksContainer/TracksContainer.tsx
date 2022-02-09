@@ -4,9 +4,9 @@ import { StyledTracksContainer } from './styled';
 export const TracksContainer = () => {
     return (
         <StyledTracksContainer>
-            <SingleTrack>Track 1</SingleTrack>
-            <SingleTrack>Track 2</SingleTrack>
-            <SingleTrack>Track 3</SingleTrack>
+            <SingleTrack></SingleTrack>
+            <SingleTrack></SingleTrack>
+            <SingleTrack></SingleTrack>
         </StyledTracksContainer>
     );
 };
