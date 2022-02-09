@@ -1,13 +1,17 @@
+import { CssBaseline, Grid } from '@mui/material';
 import React from 'react';
 import { ScenesContainer } from '../containers/ScenesContainer/ScenesContainer';
 import { TracksContainer } from '../containers/TracksContainer/TracksContainer';
 
 function App() {
   return (
-    <div className="App">
-      <TracksContainer>Tracks</TracksContainer>
-      <ScenesContainer>Scenes</ScenesContainer>
-    </div>
+    <>
+      <CssBaseline />
+      <Grid container>
+        <TracksContainer />
+        <ScenesContainer />
+      </Grid>
+    </>
   );
 }
 

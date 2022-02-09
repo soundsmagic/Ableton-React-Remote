@@ -1,9 +1,12 @@
 import { Grid } from '@mui/material';
+import { SingleTrack } from '../SingleTrack/SingleTrack';
 
-export const TracksContainer = ({ children }: { children: React.ReactNode }) => {
+export const TracksContainer = () => {
     return (
-        <Grid container style={{ 'border': '4px solid red' }}>
-            {children}
+        <Grid container item xs={8} style={{ 'backgroundColor': 'pink' }}>
+            <SingleTrack />
+            <SingleTrack />
+            <SingleTrack />
         </Grid>
     );
 };

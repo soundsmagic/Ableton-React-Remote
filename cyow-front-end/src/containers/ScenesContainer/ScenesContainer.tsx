@@ -1,9 +1,9 @@
 import { Grid } from '@mui/material';
 
-export const ScenesContainer = ({ children }: { children: React.ReactNode }) => {
+export const ScenesContainer = () => {
     return (
-        <Grid container style={{ 'border': '4px solid blue' }}>
-            {children}
+        <Grid item xs={4} style={{ 'backgroundColor': 'lightblue' }}>
+            Scenes
         </Grid>
     );
 };
