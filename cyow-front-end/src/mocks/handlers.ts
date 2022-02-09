@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 import { mockSceneList, mockTrackList } from './mockData';
-import { Track } from './types';
+import { Track } from '../types/types';
 
 export const handlers = [
     rest.get('api/scene', (req, res, ctx) => {

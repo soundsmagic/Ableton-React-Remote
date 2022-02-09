@@ -9,3 +9,8 @@ export const StyledSingleTrack = styled.div`
     display: flex;
     flex-direction: column;
 `;
+
+export const StyledTrackHeader = styled.div`
+    width: 100%;
+    text-align: center;
+`;

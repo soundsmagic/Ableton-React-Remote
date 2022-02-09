@@ -1,4 +1,4 @@
-import { Scene, Track } from './types'
+import { Scene, Track } from '../types/types'
 
 export const mockSceneList: Scene[] = [
     {
