@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import { Scene } from '../../types/types';
 import { StyledSingleScene } from './styled';
 
-export const SingleScene = ({ children }: { children: ReactNode }) => {
+export const SingleScene = ({ scene }: { scene: Scene }) => {
     return (
         <StyledSingleScene>
-            {children}
+            <span>{scene.sceneName}</span>
         </StyledSingleScene>
     );
 };

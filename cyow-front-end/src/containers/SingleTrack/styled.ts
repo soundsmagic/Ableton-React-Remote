@@ -13,4 +13,5 @@ export const StyledSingleTrack = styled.div`
 export const StyledTrackHeader = styled.div`
     width: 100%;
     text-align: center;
+    margin-bottom: 3%;
 `;
