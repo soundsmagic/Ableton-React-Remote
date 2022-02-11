@@ -1,8 +1,8 @@
 import { StyledMuteButton } from './styled';
 
-export const MuteButton = () => {
+export const MuteButton = ({ muteStatus }: { muteStatus: boolean }) => {
     return (
-        <StyledMuteButton>
+        <StyledMuteButton muteStatus={muteStatus}>
             Mute
         </StyledMuteButton>
     );

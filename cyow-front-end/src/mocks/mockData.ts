@@ -29,13 +29,13 @@ export const mockTrackList: Track[] = [
                 clipName: 'Cool loop'
             }
         ],
-        muted: false
+        muteStatus: false
     },
     {
         trackIndex: 2,
         trackName: 'Hammond',
         clipList: [],
-        muted: true
+        muteStatus: true
     },
     {
         trackIndex: 3,
@@ -54,6 +54,6 @@ export const mockTrackList: Track[] = [
                 clipName: 'Outro arp'
             }
         ],
-        muted: false
+        muteStatus: false
     }
 ]

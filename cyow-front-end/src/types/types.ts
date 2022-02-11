@@ -12,5 +12,5 @@ export interface Track {
     trackIndex: number,
     trackName: string,
     clipList: Clip[],
-    muted: boolean
+    muteStatus: boolean
 }

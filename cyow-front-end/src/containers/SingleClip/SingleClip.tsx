@@ -1,10 +1,10 @@
-import { ReactNode } from 'react';
+import { Clip } from '../../types/types';
 import { StyledSingleClip } from './styled';
 
-export const SingleClip = ({ children }: { children: ReactNode }) => {
+export const SingleClip = ({ clip }: { clip: Clip }) => {
     return (
         <StyledSingleClip>
-            {children}
+            <span>{clip.clipName}</span>
         </StyledSingleClip>
     );
 };

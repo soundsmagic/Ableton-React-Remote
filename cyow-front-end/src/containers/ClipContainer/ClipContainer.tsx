@@ -1,21 +1,12 @@
+import { Clip } from '../../types/types';
 import { SingleClip } from '../SingleClip/SingleClip';
 import { StyledClipContainer } from './styled';
 
-export const ClipContainer = () => {
+export const ClipContainer = ({ clipList }: { clipList: Clip[] }) => {
     return (
         <StyledClipContainer>
-            <SingleClip>
-                <span>Clip 1</span>
-            </SingleClip>
-            <SingleClip>
-                <span>Clip 2</span>
-            </SingleClip>
-            <SingleClip>
-                <span>Clip 3</span>
-            </SingleClip>
-            <SingleClip>
-                <span>Clip 4</span>
-            </SingleClip>
+            {clipList.map((item) =>
+                <SingleClip key={item.clipIndex} clip={item} />)}
         </StyledClipContainer>
     );
 };
