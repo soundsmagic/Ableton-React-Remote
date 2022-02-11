@@ -1,4 +1,4 @@
-/scene:
+/scenes:
   get:
     $ref: './paths/scene/read.yaml'
 /scene/{sceneIndex}/launch:
