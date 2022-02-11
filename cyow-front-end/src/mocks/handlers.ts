@@ -3,7 +3,7 @@ import { mockSceneList, mockTrackList } from './mockData';
 import { Track } from '../types/types';
 
 export const handlers = [
-    rest.get('api/scene', (req, res, ctx) => {
+    rest.get('api/scenes', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json(mockSceneList)
