@@ -1,11 +1,11 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import { liveApi } from '../api/liveApi';
+import { remoteScriptsApi } from '../api/remoteScriptsApi';
 
 export const store = configureStore({
   reducer: {
-    [liveApi.reducerPath]: liveApi.reducer,
+    [remoteScriptsApi.reducerPath]: remoteScriptsApi.reducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(liveApi.middleware),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(remoteScriptsApi.middleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

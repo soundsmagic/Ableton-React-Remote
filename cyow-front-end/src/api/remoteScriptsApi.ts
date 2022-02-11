@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Scene, Track } from '../types/types';
+import { ClipParams, Scene, Track, TrackUpdate } from '../types/types';
 
-export const liveApi = createApi({
+export const remoteScriptsApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: '/api', prepareHeaders: (headers) => {
             headers.set('Accept', 'plain/text, application/json');
@@ -21,9 +21,16 @@ export const liveApi = createApi({
         getSingleTrack: builder.query<Track, number>({
             query: (trackIndex) => ({ url: `/track/${trackIndex}` })
         }),
-        launchClip: builder.query<void, { trackIndex: number, clipIndex: number }>({
+        launchClip: builder.query<void, ClipParams>({
             query: (options) => ({ url: `/track/${options.trackIndex}/${options.clipIndex}/launch` })
         }),
+        toggleMute: builder.mutation<void, TrackUpdate>({
+            query: (options) => ({
+                url: `/track/${options.trackIndex}`,
+                method: 'PATCH',
+                body: options.update
+            })
+        })
     })
 })
 
@@ -32,5 +39,6 @@ export const {
     useLaunchSceneQuery,
     useGetTracksQuery,
     useGetSingleTrackQuery,
-    useLaunchClipQuery
-} = liveApi;
+    useLaunchClipQuery,
+    useToggleMuteMutation
+} = remoteScriptsApi;

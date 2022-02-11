@@ -14,3 +14,16 @@ export interface Track {
     clipList: Clip[],
     muteStatus: boolean
 }
+
+export interface ClipParams {
+    trackIndex: number,
+    clipIndex: number
+}
+
+export interface TrackUpdate {
+    trackIndex: number,
+    update: {
+        trackName?: string,
+        muteStatus?: boolean
+    }
+}

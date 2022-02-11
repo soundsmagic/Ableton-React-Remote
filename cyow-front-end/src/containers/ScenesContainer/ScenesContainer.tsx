@@ -1,4 +1,4 @@
-import { useGetScenesQuery } from '../../api/liveApi';
+import { useGetScenesQuery } from '../../api/remoteScriptsApi';
 import { SingleScene } from '../SingleScene/SingleScene';
 import { StyledScenesContainer } from './styled';
 
