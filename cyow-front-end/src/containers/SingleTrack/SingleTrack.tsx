@@ -10,9 +10,7 @@ export const SingleTrack = ({ trackIndex }: { trackIndex: number }) => {
         if (track) {
             toggleMute({
                 trackIndex: track.trackIndex,
-                update: {
-                    muteStatus: !track.muteStatus
-                }
+                update: { muteStatus: !track.muteStatus }
             })
         }
     };
