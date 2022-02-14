@@ -1,7 +1,7 @@
 ---
 tags:
   - Scene
-summary: 'Get a list containing the current scenes.'
+summary: 'Get a list containing the indexes for the current scenes.'
 operationId: getSceneList
 responses:
   '200':
@@ -11,7 +11,7 @@ responses:
         schema:
           type: array
           items:
-            '$ref': '../../schemas.yaml#/sceneModel'
+            type: integer
   '500':
     '$ref': '../../responses.yaml#/500'
           

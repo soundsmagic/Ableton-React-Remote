@@ -1,13 +1,32 @@
 import { rest } from 'msw';
 import { mockSceneList, mockTrackList } from './mockData';
-import { Track } from '../types/types';
+import { Scene, Track } from '../types/types';
 
 export const handlers = [
     rest.get('api/scenes', (req, res, ctx) => {
         return res(
             ctx.status(200),
-            ctx.json(mockSceneList)
+            ctx.json(mockSceneList.map(item => item.sceneIndex))
         );
+    }),
+    rest.get<null, Record<string, string>, Scene>('api/scene/:sceneIndex', (req, res, ctx) => {
+        const { sceneIndex } = req.params;
+        let index: number;
+        try {
+            index = parseInt(sceneIndex)
+        } catch (error) {
+            console.log('Wrong format of supplied scene index.')
+        }
+        const requestedSceneObject = mockSceneList.find(item => item.sceneIndex === index);
+        if (requestedSceneObject) {
+            return res(
+                ctx.status(200),
+                ctx.json(requestedSceneObject)
+            )
+        }
+        return res(
+            ctx.status(404),
+        )
     }),
     rest.get('api/scene/:sceneIndex/launch', (req, res, ctx) => {
         const { sceneIndex } = req.params;
@@ -19,7 +38,7 @@ export const handlers = [
     rest.get('api/tracks', (req, res, ctx) => {
         return res(
             ctx.status(200),
-            ctx.json(mockTrackList)
+            ctx.json(mockTrackList.map(item => item.trackIndex))
         );
     }),
     rest.get<null, Record<string, string>, Track>('api/track/:trackIndex', (req, res, ctx) => {

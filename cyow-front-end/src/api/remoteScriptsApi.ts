@@ -9,13 +9,16 @@ export const remoteScriptsApi = createApi({
         }
     }),
     endpoints: (builder) => ({
-        getScenes: builder.query<Scene[], void>({
+        getScenes: builder.query<number[], void>({
             query: () => ({ url: '/scenes' })
+        }),
+        getSingleScene: builder.query<Scene, number>({
+            query: (sceneIndex) => ({ url: `/scene/${sceneIndex}` })
         }),
         launchScene: builder.query<void, number>({
             query: (sceneIndex) => ({ url: `/scene/${sceneIndex}/launch` })
         }),
-        getTracks: builder.query<Track[], void>({
+        getTracks: builder.query<number[], void>({
             query: () => ({ url: '/tracks' })
         }),
         getSingleTrack: builder.query<Track, number>({
@@ -36,6 +39,7 @@ export const remoteScriptsApi = createApi({
 
 export const {
     useGetScenesQuery,
+    useGetSingleSceneQuery,
     useLaunchSceneQuery,
     useGetTracksQuery,
     useGetSingleTrackQuery,
