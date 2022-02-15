@@ -10,7 +10,8 @@ export const remoteScriptsApi = createApi({
     }),
     endpoints: (builder) => ({
         getScenes: builder.query<number[], void>({
-            query: () => ({ url: '/scenes' })
+            query: () => ({ url: '/scenes' }),
+            providesTags: ['Scenes']
         }),
         getSingleScene: builder.query<Scene, number>({
             query: (sceneIndex) => ({ url: `/scene/${sceneIndex}` })
