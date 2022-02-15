@@ -89,5 +89,5 @@ export const handlers = [
         } else {
             console.log('No track with that index.')
         }
-    })
+    }),
 ]

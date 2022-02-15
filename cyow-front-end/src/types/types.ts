@@ -20,7 +20,7 @@ export interface ClipParams {
     clipIndex: number
 }
 
-export interface TrackUpdate {
+export interface TrackUpdateMutation {
     trackIndex: number,
     update: {
         trackName?: string,
