@@ -47,6 +47,6 @@ export const {
     useLaunchSceneQuery,
     useGetTracksQuery,
     useGetSingleTrackQuery,
-    useLaunchClipQuery,
+    useLazyLaunchClipQuery,
     useToggleMuteMutation
 } = remoteScriptsApi;

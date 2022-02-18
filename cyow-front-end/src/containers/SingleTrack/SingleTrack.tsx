@@ -1,7 +1,7 @@
 import { ClipContainer } from '../ClipContainer/ClipContainer';
 import { MuteButton } from '../MuteButton/MuteButton';
 import { StyledSingleTrack, StyledTrackHeader } from './styled';
-import { useGetSingleTrackQuery, useToggleMuteMutation } from '../../api/remoteScriptsApi';
+import { useGetSingleTrackQuery, useLazyLaunchClipQuery, useToggleMuteMutation } from '../../api/remoteScriptsApi';
 
 export const SingleTrack = ({ trackIndex }: { trackIndex: number }) => {
     const { data: track, error, isLoading } = useGetSingleTrackQuery(trackIndex);
@@ -11,9 +11,18 @@ export const SingleTrack = ({ trackIndex }: { trackIndex: number }) => {
             toggleMute({
                 trackIndex: track.trackIndex,
                 update: { muteStatus: !track.muteStatus }
-            })
+            });
         }
     };
+    const [launchClip] = useLazyLaunchClipQuery();
+    const clipLaunchHandler = (index: number) => {
+        if (track) {
+            launchClip({
+                trackIndex: track.trackIndex,
+                clipIndex: index
+            });
+        }
+    }
     return (
         <>
             {isLoading && <div>Loading...</div>}
@@ -21,8 +30,7 @@ export const SingleTrack = ({ trackIndex }: { trackIndex: number }) => {
             {(!(isLoading && error) && track) &&
                 <StyledSingleTrack>
                     <StyledTrackHeader><span>{track.trackName}</span></StyledTrackHeader>
-                    <ClipContainer clipList={track.clipList} />
-                    {/* TODO: Skapa logik för klick på mute-knappen och triggande av mutation */}
+                    <ClipContainer clipList={track.clipList} clipLaunchHandler={clipLaunchHandler} />
                     <MuteButton muteStatus={track.muteStatus} onClick={muteToggleHandler} />
                 </StyledSingleTrack>
             }
