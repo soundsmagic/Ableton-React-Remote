@@ -5,7 +5,7 @@ import threading
 from http_parse import HttpRequestParser
 from http_response import make_response
 from wsgi import WSGIRequest, WSGIResponse
-from app import app
+from application import app
 
 
 class Session:
@@ -25,7 +25,7 @@ class Session:
             if self.response.is_sent:
                 break
             data = self.client_socket.recv(1024)
-            self.log_message(f"Received {data}")
+            self.log_message(f"Received {data}.")
             self.parser.feed_data(data)
         self.client_socket.close()
         self.log_message(f"Socket with {self.address} closed.")
