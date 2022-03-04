@@ -11,7 +11,7 @@ from .src.server.session import Session
 class Cyow(ControlSurface):
     def __init__(self, c_instance):
         super(Cyow, self).__init__(c_instance)
-        Session.log_message(self.log_message)
+        Session.set_log_function(self.log_message)
         self.schedule_message(1, self.init_server)
 
     def init_server(self):
