@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List, Tuple
 from io import BytesIO
-from http_response import make_response
+from .http_response import make_response
 
 
 @dataclass

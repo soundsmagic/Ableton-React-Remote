@@ -1,4 +1,4 @@
-from splitbuffer import SplitBuffer
+from .splitbuffer import SplitBuffer
 
 
 class HttpRequestParser:

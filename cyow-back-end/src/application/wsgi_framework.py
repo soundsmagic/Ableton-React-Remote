@@ -5,7 +5,7 @@ from dataclasses import dataclass
 
 class WSGIApplication:
     def __init__(self) -> None:
-        self.path.operations = dict()
+        self.path_operations = dict()
 
     def _register_path_operations(self, path: str, http_method: str, func: Callable):
         po = PathOperation(path, http_method)

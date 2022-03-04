@@ -1,11 +1,8 @@
-from audioop import add
-from typing import Tuple
 import socket
 import threading
-from http_parse import HttpRequestParser
-from http_response import make_response
-from wsgi import WSGIRequest, WSGIResponse
-from application import app
+from .http_parse import HttpRequestParser
+from .wsgi import WSGIRequest, WSGIResponse
+from ..application.app import app
 
 
 class Session:

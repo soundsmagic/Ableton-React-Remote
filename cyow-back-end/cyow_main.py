@@ -5,7 +5,7 @@ import socket
 import os
 import json
 
-from server import Session
+from .src.server.session import Session
 
 
 class Cyow(ControlSurface):
