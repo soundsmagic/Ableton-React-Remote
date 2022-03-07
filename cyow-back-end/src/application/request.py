@@ -1,15 +1,31 @@
 from typing import Dict
 from dataclasses import dataclass
+import typing
 
 
 @dataclass
 class Request:
+    path: str
     query: Dict[str, str]
     body: bytes
     headers: Dict[str, str]
+    path_params: Dict[str, typing.Any]
 
     @classmethod
     def from_environ(cls, environ: Dict):
+        path_params = {}
+        if environ["PATH_INFO"].find("/track/") == 0:
+            path_parts = environ["PATH_INFO"].split("/")
+            path_params["track_index"] = path_parts[1]
+
+            if "launch" in environ["PATH_INFO"]:
+                path_params["clip_index"] = path_parts[2]
+                path = "/track/launch"
+
+            path = "/track"
+        else:
+            path = environ["PATH_INFO"]
+
         query = {}
         if environ["QUERY_STRING"]:
             qs = environ["QUERY_STRING"]
@@ -20,4 +36,4 @@ class Request:
             for key, value in environ.items()
             if key.startswith("HTTP_")
         }
-        return cls(query, body, headers)
+        return cls(path, query, body, headers, path_params)

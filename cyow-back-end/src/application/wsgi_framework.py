@@ -26,14 +26,14 @@ class WSGIApplication:
         return self._create_register_decorator(path, "POST")
 
     def __call__(self, environ, start_response):
-        po = PathOperation(environ["PATH_INFO"], environ["REQUEST_METHOD"])
+        request = Request.from_environ(environ)
+        po = PathOperation(request.path, environ["REQUEST_METHOD"])
         func = self.path_operations.get(po)
         if func is None:
             status = "404 NOT FOUND"
             headers = [("Content-Type", "text/plain")]
             body = b""
         else:
-            request = Request.from_environ(environ)
             status = "200 OK"
             headers = [("Content-Type", "text/plain")]
             body = func(request=request).encode("utf-8")
