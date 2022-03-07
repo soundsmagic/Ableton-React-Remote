@@ -6,9 +6,8 @@ from .request import Request
 
 
 class WSGIApplication:
-    def __init__(self, song):
+    def __init__(self):
         self.path_operations = dict()
-        self.song = song
 
     def _register_path_operations(self, path: str, http_method: str, func: Callable):
         po = PathOperation(path, http_method)
@@ -28,7 +27,7 @@ class WSGIApplication:
         return self._create_register_decorator(path, "POST")
 
     def __call__(self, environ, start_response):
-        request = Request.from_environ(environ, self.song)
+        request = Request.from_environ(environ)
         po = PathOperation(request.path, environ["REQUEST_METHOD"])
         func = self.path_operations.get(po)
         if func is None:

@@ -10,7 +10,6 @@ mock_scene_list = [
     {"scene_index": 4, "scene_name": "Second song"},
 ]
 
-
 mock_track_list = [
     {
         "track_index": 1,
@@ -40,7 +39,7 @@ def get_scenes(request: Request):
 
 @app.get("/api/tracks")
 def get_tracks(request: Request):
-    track_list = request.song.tracks
+    track_list = [track["track_index"] for track in mock_track_list]
     return json.dumps(track_list)
 
 

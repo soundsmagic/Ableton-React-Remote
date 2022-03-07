@@ -6,13 +6,13 @@ from ..application.app import app
 
 
 class Session:
-    def __init__(self, client_socket, address, song):
+    def __init__(self, client_socket, address, ableton):
         self.client_socket = client_socket
         self.address = address
         self.parser = HttpRequestParser(self)
         self.request = WSGIRequest()
         self.response = WSGIResponse()
-        self.song = song
+        self.ableton = ableton
 
     @staticmethod
     def set_log_function(function):
@@ -45,7 +45,7 @@ class Session:
     def on_message_complete(self):
         self.log_message("Received message completely.")
         environ = self.request.to_environ()
-        body_chunks = app(environ, self.response.start_response)
+        body_chunks = app(environ, self.response.start_response, self.ableton)
         self.response.body = b"".join(body_chunks)
         self.log_message(
             f"App callable has returned with status {self.response.status}"
