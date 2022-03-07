@@ -33,12 +33,14 @@ mock_track_list = [
 
 @app.get("/api/scenes")
 def get_scenes(request: Request):
-    return [scene["scene_index"] for scene in mock_scene_list]
+    scene_list = [scene["scene_index"] for scene in mock_scene_list]
+    return ", ".join(map(str, scene_list))
 
 
 @app.get("/api/tracks")
 def get_tracks(request: Request):
-    return [track["track_index"] for track in mock_track_list]
+    track_list = [track["track_index"] for track in mock_track_list]
+    return ", ".join(map(str, track_list))
 
 
 @app.get("/api/track/launch")
