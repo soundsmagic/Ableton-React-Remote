@@ -11,6 +11,7 @@ from .src.server.session import Session
 class Cyow(ControlSurface):
     def __init__(self, c_instance):
         super(Cyow, self).__init__(c_instance)
+        self.ableton_instance = c_instance
         Session.set_log_function(self.log_message)
         self.schedule_message(1, self.init_server)
 
@@ -27,7 +28,7 @@ class Cyow(ControlSurface):
         try:
             client_socket, address = self.server_socket.accept()
             self.log_message(f"Socket established with {address}")
-            session = Session(client_socket, address)
+            session = Session(client_socket, address, self.ableton_instance)
             session.run()
         except socket.error as err:
             return

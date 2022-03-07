@@ -26,8 +26,8 @@ class WSGIApplication:
     def post(self, path: str):
         return self._create_register_decorator(path, "POST")
 
-    def __call__(self, environ, start_response):
-        request = Request.from_environ(environ)
+    def __call__(self, environ, start_response, instance):
+        request = Request.from_environ(environ, instance)
         po = PathOperation(request.path, environ["REQUEST_METHOD"])
         func = self.path_operations.get(po)
         if func is None:
