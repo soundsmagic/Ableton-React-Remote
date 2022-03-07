@@ -1,4 +1,5 @@
 from ast import Call
+import os
 from typing import Callable
 from dataclasses import dataclass
 from .request import Request
@@ -30,9 +31,23 @@ class WSGIApplication:
         po = PathOperation(request.path, environ["REQUEST_METHOD"])
         func = self.path_operations.get(po)
         if func is None:
-            status = "404 NOT FOUND"
-            headers = [("Content-Type", "text/plain")]
-            body = request.path.encode("utf-8")
+            try:
+                build_dir = r"C:\ProgramData\Ableton\Live 11 Suite\Resources\MIDI Remote Scripts\CYOW_Remote_App\build"
+                file_path = (
+                    build_dir + "/index.html"
+                    if request.path == "/"
+                    else build_dir + request.path
+                )
+                file_to_serve = open(file_path)
+                file_content = file_to_serve.read()
+                file_to_serve.close()
+                status = "200 OK"
+                headers = []
+                body = file_content.encode("utf-8")
+            except:
+                status = "404 NOT FOUND"
+                headers = [("Content-type", "text/plain")]
+                body = b"Resource not found."
         else:
             status = "200 OK"
             headers = [("Content-Type", "text/plain")]
