@@ -1,6 +1,7 @@
 from ast import Call
 from typing import Callable
 from dataclasses import dataclass
+from .request import Request
 
 
 class WSGIApplication:
@@ -32,9 +33,10 @@ class WSGIApplication:
             headers = [("Content-Type", "text/plain")]
             body = b""
         else:
+            request = Request.from_environ(environ)
             status = "200 OK"
             headers = [("Content-Type", "text/plain")]
-            body = func().encode("utf-8")
+            body = func(request=request).encode("utf-8")
         start_response(status, headers)
         return [body]
 
