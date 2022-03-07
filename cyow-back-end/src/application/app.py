@@ -1,10 +1,11 @@
 from .wsgi_framework import WSGIApplication, Request
+import json
 
 app = WSGIApplication()
 
 mock_scene_list = [
     {"scene_index": 1, "scene_name": "Intro"},
-    {"scene_index": 2, "scene_name": "FirstSong"},
+    {"scene_index": 2, "scene_name": "First song"},
     {"scene_index": 3, "scene_name": "Interlude"},
     {"scene_index": 4, "scene_name": "Second song"},
 ]
@@ -34,13 +35,13 @@ mock_track_list = [
 @app.get("/api/scenes")
 def get_scenes(request: Request):
     scene_list = [scene["scene_index"] for scene in mock_scene_list]
-    return ", ".join(map(str, scene_list))
+    return json.dumps(scene_list)
 
 
 @app.get("/api/tracks")
 def get_tracks(request: Request):
-    track_list = [track["track_index"] for track in mock_track_list]
-    return ", ".join(map(str, track_list))
+    track_list = request.song.tracks
+    return json.dumps(track_list)
 
 
 @app.get("/api/track/launch")

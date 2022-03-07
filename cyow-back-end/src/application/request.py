@@ -10,9 +10,10 @@ class Request:
     body: bytes
     headers: Dict[str, str]
     path_params: Dict[str, typing.Any]
+    song: typing.Any
 
     @classmethod
-    def from_environ(cls, environ: Dict):
+    def from_environ(cls, environ: Dict, song):
         path_params = {}
         if environ["PATH_INFO"].find("/api/track/") == 0:
             path_parts = environ["PATH_INFO"].split("/")
@@ -36,4 +37,4 @@ class Request:
             for key, value in environ.items()
             if key.startswith("HTTP_")
         }
-        return cls(path, query, body, headers, path_params)
+        return cls(path, query, body, headers, path_params, song)

@@ -6,12 +6,13 @@ from ..application.app import app
 
 
 class Session:
-    def __init__(self, client_socket, address):
+    def __init__(self, client_socket, address, song):
         self.client_socket = client_socket
         self.address = address
         self.parser = HttpRequestParser(self)
         self.request = WSGIRequest()
         self.response = WSGIResponse()
+        self.song = song
 
     @staticmethod
     def set_log_function(function):
