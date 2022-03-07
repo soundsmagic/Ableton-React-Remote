@@ -32,7 +32,7 @@ class WSGIApplication:
         if func is None:
             status = "404 NOT FOUND"
             headers = [("Content-Type", "text/plain")]
-            body = b""
+            body = request.path.encode("utf-8")
         else:
             status = "200 OK"
             headers = [("Content-Type", "text/plain")]

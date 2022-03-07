@@ -45,6 +45,8 @@ class Session:
         self.log_message("Received message completely.")
         environ = self.request.to_environ()
         body_chunks = app(environ, self.response.start_response)
-        self.log_message("App callable has returned")
         self.response.body = b"".join(body_chunks)
+        self.log_message(
+            f"App callable has returned with status {self.response.status} body {self.response.body.decode('utf-8')}"
+        )
         self.client_socket.send(self.response.to_http())

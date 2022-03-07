@@ -14,15 +14,15 @@ class Request:
     @classmethod
     def from_environ(cls, environ: Dict):
         path_params = {}
-        if environ["PATH_INFO"].find("/track/") == 0:
+        if environ["PATH_INFO"].find("/api/track/") == 0:
             path_parts = environ["PATH_INFO"].split("/")
-            path_params["track_index"] = path_parts[1]
+            path_params["track_index"] = path_parts[3]
 
             if "launch" in environ["PATH_INFO"]:
-                path_params["clip_index"] = path_parts[2]
-                path = "/track/launch"
-
-            path = "/track"
+                path_params["clip_index"] = path_parts[4]
+                path = "/api/track/launch"
+            else:
+                path = "/api/track"
         else:
             path = environ["PATH_INFO"]
 
