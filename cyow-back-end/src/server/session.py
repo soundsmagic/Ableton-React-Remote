@@ -6,13 +6,12 @@ from ..application.app import app
 
 
 class Session:
-    def __init__(self, client_socket, address, ableton):
+    def __init__(self, client_socket, address):
         self.client_socket = client_socket
         self.address = address
         self.parser = HttpRequestParser(self)
         self.request = WSGIRequest()
         self.response = WSGIResponse()
-        self.ableton = ableton
 
     @staticmethod
     def set_log_function(function):
@@ -45,9 +44,9 @@ class Session:
     def on_message_complete(self):
         self.log_message("Received message completely.")
         environ = self.request.to_environ()
-        body_chunks = app(environ, self.response.start_response, self.ableton)
+        body_chunks = app(environ, self.response.start_response)
         self.response.body = b"".join(body_chunks)
         self.log_message(
-            f"App callable has returned with status {self.response.status}"
+            f"App callable has returned with status {self.response.status}."
         )
         self.client_socket.send(self.response.to_http())
