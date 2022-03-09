@@ -24,7 +24,7 @@ class Session:
                 break
             data = self.client_socket.recv(1024)
             self.log_message(f"Received {data}.")
-            self.log_message(f"Song tempo: {type(self.ableton_instance.song().tracks)}")
+            self.log_message(f"Super research! {self.ableton_instance.tracks[0].name}")
             self.parser.feed_data(data)
         self.client_socket.close()
         self.log_message(f"Socket with {self.address} closed.")
