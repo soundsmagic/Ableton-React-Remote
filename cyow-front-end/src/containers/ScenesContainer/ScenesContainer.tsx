@@ -10,7 +10,7 @@ export const ScenesContainer = () => {
             {error && <pre style={{ 'wordBreak': 'break-word' }}>{JSON.stringify(error, undefined, 2)}</pre>}
             {data && !isLoading && !error &&
                 <StyledScenesContainer>
-                    {data.map((item) => <SingleScene key={item} sceneIndex={item} />)}
+                    {Array.from(Array(data).keys()).map((item) => <SingleScene key={item} sceneIndex={item} />)}
                 </StyledScenesContainer>}
         </>
     );

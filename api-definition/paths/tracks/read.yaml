@@ -1,16 +1,14 @@
 ---
 tags:
   - Track
-summary: 'Get a list containing the indexes for the current tracks.'
-operationId: getTrackList
+summary: 'Get the current number of tracks in the song.'
+operationId: getTracks
 responses:
   '200':
-    description: 'List of track indexes fetched.'
+    description: 'Tracks fetched.'
     content:
       application/json:
         schema:
-          type: array
-          items:
-            type: integer
+          type: integer
   '500':
     '$ref': '../../responses.yaml#/500'

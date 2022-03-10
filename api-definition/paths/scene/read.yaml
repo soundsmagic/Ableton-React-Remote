@@ -1,0 +1,16 @@
+---
+tags:
+  - Scene
+summary: 'Get all properties of the supplied scene.'
+operationId: getSceneObject
+parameters:
+  - '$ref': '../../parameters.yaml#/sceneIndex'
+responses:
+  '200':
+    description: 'Scene object fetched.'
+    content:
+      application/json:
+        schema:
+          '$ref': '../../schemas.yaml#/sceneModel'
+  '500':
+    '$ref': '../../responses.yaml#/500'

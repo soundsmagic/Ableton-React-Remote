@@ -10,8 +10,8 @@ export const remoteScriptsApi = createApi({
     }),
     tagTypes: ['Scene', 'Track'],
     endpoints: (builder) => ({
-        getScenes: builder.query<number[], void>({
-            query: () => ({ url: '/scenes' })
+        getScenes: builder.query<number, void>({
+            query: () => ({ url: '/scenes', responseHandler: (response) => response.status === 200 ? response.text() : response.json() })
         }),
         getSingleScene: builder.query<Scene, number>({
             query: (sceneIndex) => ({ url: `/scene/${sceneIndex}` }),
@@ -20,8 +20,8 @@ export const remoteScriptsApi = createApi({
         launchScene: builder.query<void, number>({
             query: (sceneIndex) => ({ url: `/scene/${sceneIndex}/launch` })
         }),
-        getTracks: builder.query<number[], void>({
-            query: () => ({ url: '/tracks' })
+        getTracks: builder.query<number, void>({
+            query: () => ({ url: '/tracks', responseHandler: (response) => response.status === 200 ? response.text() : response.json() })
         }),
         getSingleTrack: builder.query<Track, number>({
             query: (trackIndex) => ({ url: `/track/${trackIndex}` }),
