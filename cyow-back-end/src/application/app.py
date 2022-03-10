@@ -34,7 +34,7 @@ mock_track_list = [
 @app.get("/api/scenes")
 def get_scenes(request: Request):
     scene_list = [scene["scene_index"] for scene in mock_scene_list]
-    return json.dumps(scene_list)
+    return str(request.ableton_song.tempo)
 
 
 @app.get("/api/tracks")

@@ -10,10 +10,10 @@ class Request:
     body: bytes
     headers: Dict[str, str]
     path_params: Dict[str, typing.Any]
-    ableton_instance: typing.Any
+    ableton_song: typing.Any
 
     @classmethod
-    def from_environ(cls, environ: Dict, ableton_instance):
+    def from_environ(cls, environ: Dict, ableton_song):
         path_params = {}
         if environ["PATH_INFO"].find("/api/track/") == 0:
             path_parts = environ["PATH_INFO"].split("/")
@@ -37,4 +37,4 @@ class Request:
             for key, value in environ.items()
             if key.startswith("HTTP_")
         }
-        return cls(path, query, body, headers, path_params, ableton_instance)
+        return cls(path, query, body, headers, path_params, ableton_song)
