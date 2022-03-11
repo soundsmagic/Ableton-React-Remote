@@ -1,4 +1,4 @@
-// import { ClipContainer } from '../ClipContainer/ClipContainer';
+import { ClipContainer } from '../ClipContainer/ClipContainer';
 // import { MuteButton } from '../MuteButton/MuteButton';
 import { StyledSingleTrack, StyledTrackHeader } from './styled';
 import { useGetSingleTrackQuery } from '../../api/remoteScriptsApi';
@@ -15,14 +15,15 @@ export const SingleTrack = ({ trackIndex }: { trackIndex: number }) => {
     //     }
     // };
     // const [launchClip] = useLazyLaunchClipQuery();
-    // const clipLaunchHandler = (index: number) => {
-    //     if (track) {
-    //         launchClip({
-    //             trackIndex: track.trackIndex,
-    //             clipIndex: index
-    //         });
-    //     }
-    // }
+    const clipLaunchHandler = (index: number) => {
+        // if (track) {
+        //     launchClip({
+        //         trackIndex: track.trackIndex,
+        //         clipIndex: index
+        //     });
+        // }
+        return null
+    }
     return (
         <>
             {isLoading && <div>Loading...</div>}
@@ -30,7 +31,7 @@ export const SingleTrack = ({ trackIndex }: { trackIndex: number }) => {
             {(!(isLoading && error) && track) &&
                 <StyledSingleTrack>
                     <StyledTrackHeader><span>{track.trackName}</span></StyledTrackHeader>
-                    {/* <ClipContainer clipList={track.clipList} clipLaunchHandler={clipLaunchHandler} /> */}
+                    <ClipContainer clipList={track.clipList} clipLaunchHandler={clipLaunchHandler} />
                     {/* <MuteButton muteStatus={track.muteStatus} onClick={muteToggleHandler} /> */}
                 </StyledSingleTrack>
             }

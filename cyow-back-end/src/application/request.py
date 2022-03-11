@@ -28,12 +28,11 @@ class Request:
         elif environ["PATH_INFO"].find("/api/scene/") == 0:
             path_parts = environ["PATH_INFO"].split("/")
             path_params["scene_index"] = int(path_parts[3])
-
-            if "launch" in environ["PATH_INFO"]:
-                path_params["clip_index"] = int(path_parts[4])
-                path = "/api/scene/launch"
-            else:
-                path = "/api/scene"
+            path = (
+                "/api/scene/launch"
+                if "launch" in environ["PATH_INFO"]
+                else "/api/scene"
+            )
         else:
             path = environ["PATH_INFO"]
 

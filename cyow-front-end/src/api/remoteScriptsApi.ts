@@ -28,9 +28,16 @@ export const remoteScriptsApi = createApi({
         launchScene: builder.query<void, number>({
             query: (sceneIndex) => ({ url: `/scene/${sceneIndex}/launch` })
         }),
-        getTracks: builder.query<number[], void>({
+        getTracks: builder.query<number[] | null, void>({
             query: () => ({ url: '/tracks', responseHandler: (response) => response.status === 200 ? response.text() : response.json() }),
-            transformResponse: response => Array.from(Array(response).keys())
+            // Same as for scenes above.
+            transformResponse: response => {
+                if (typeof (response) === 'string') {
+                    const numberOfTracks = parseInt(response);
+                    return [...Array(numberOfTracks).keys()]
+                }
+                return null
+            }
         }),
         getSingleTrack: builder.query<Track, number>({
             query: (trackIndex) => ({ url: `/track/${trackIndex}` }),

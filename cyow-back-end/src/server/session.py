@@ -44,6 +44,9 @@ class Session:
 
     def on_message_complete(self):
         self.log_message("Received message completely.")
+        self.log_message(
+            f"Some cool research: {self.ableton_song.tracks[0].clip_slots.__len__()}"
+        )
         environ = self.request.to_environ()
         body_chunks = app(environ, self.response.start_response, self.ableton_song)
         self.response.body = b"".join(body_chunks)
