@@ -31,8 +31,8 @@ def get_single_track(request: Request):
     track_name = track.name
 
     clip_list = []
-    for index, clip in enumerate(track.clip_slots):
-        if clip:
+    for index, clip_slot in enumerate(track.clip_slots):
+        if clip_slot.clip:
             clip_list.append(
                 {"clipIndex": index, "clipName": track.clip_slots[index].clip.name}
             )
@@ -45,15 +45,6 @@ def get_single_track(request: Request):
         "clipList": clip_list,
     }
     return json.dumps(track_dict)
-
-
-@app.get("/api/track/clip")
-def get_clip_slots(request: Request):
-    track_index = request.path_params["track_index"]
-    clip_index = request.path_params["clip_index"]
-    clip_name = request.ableton_song.track[track_index].clip_slots[clip_index].name
-    clip_dict = {"clipIndex": clip_index, "clipName": clip_name}
-    return json.dumps(clip_dict)
 
 
 @app.get("/api/track/launch")
