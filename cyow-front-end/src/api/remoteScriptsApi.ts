@@ -10,10 +10,16 @@ export const remoteScriptsApi = createApi({
     }),
     tagTypes: ['Scene', 'Track'],
     endpoints: (builder) => ({
-        getScenes: builder.query<number[], void>({
+        getScenes: builder.query<number[] | null, void>({
             query: () => ({ url: '/scenes', responseHandler: (response) => response.status === 200 ? response.text() : response.json() }),
             // The API responds with the number of scenes, but we will eventually need a list of scene indexes to iterate over.
-            transformResponse: response => [1, 2, 3, 4, 5, 6, 7]
+            transformResponse: response => {
+                if (typeof (response) === 'string') {
+                    const numberOfScenes = parseInt(response);
+                    return [...Array(numberOfScenes).keys()]
+                }
+                return null
+            }
         }),
         getSingleScene: builder.query<Scene, number>({
             query: (sceneIndex) => ({ url: `/scene/${sceneIndex}` }),
