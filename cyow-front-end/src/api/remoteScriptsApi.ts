@@ -10,8 +10,10 @@ export const remoteScriptsApi = createApi({
     }),
     tagTypes: ['Scene', 'Track'],
     endpoints: (builder) => ({
-        getScenes: builder.query<number, void>({
-            query: () => ({ url: '/scenes', responseHandler: (response) => response.status === 200 ? response.text() : response.json() })
+        getScenes: builder.query<number[], void>({
+            query: () => ({ url: '/scenes', responseHandler: (response) => response.status === 200 ? response.text() : response.json() }),
+            // The API responds with the number of scenes, but we will eventually need a list of scene indexes to iterate over.
+            transformResponse: response => [1, 2, 3, 4, 5, 6, 7]
         }),
         getSingleScene: builder.query<Scene, number>({
             query: (sceneIndex) => ({ url: `/scene/${sceneIndex}` }),
@@ -20,8 +22,9 @@ export const remoteScriptsApi = createApi({
         launchScene: builder.query<void, number>({
             query: (sceneIndex) => ({ url: `/scene/${sceneIndex}/launch` })
         }),
-        getTracks: builder.query<number, void>({
-            query: () => ({ url: '/tracks', responseHandler: (response) => response.status === 200 ? response.text() : response.json() })
+        getTracks: builder.query<number[], void>({
+            query: () => ({ url: '/tracks', responseHandler: (response) => response.status === 200 ? response.text() : response.json() }),
+            transformResponse: response => Array.from(Array(response).keys())
         }),
         getSingleTrack: builder.query<Track, number>({
             query: (trackIndex) => ({ url: `/track/${trackIndex}` }),
