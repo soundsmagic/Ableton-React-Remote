@@ -47,6 +47,17 @@ def get_single_track(request: Request):
     return json.dumps(track_dict)
 
 
+@app.patch("/api/track")
+def update_track(request: Request):
+    update_body = request.body.decode("utf-8")
+    update_object = json.loads(update_body)
+
+    track_index = request.path_params["track_index"]
+    track = request.ableton_song.tracks[track_index]
+    track.mute = update_object["muteStatus"]
+    return f"Mute status changed to {update_object['muteStatus']}"
+
+
 @app.get("/api/track/launch")
 def launch_clip(request: Request):
     return f"Called launch clip with index {request.path_params['clip_index']} on track {request.path_params['track_index']}"
