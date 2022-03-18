@@ -28,8 +28,6 @@ def get_single_track(request: Request):
     track_index = request.path_params["track_index"]
     track = request.ableton_song.tracks[track_index]
 
-    track_name = track.name
-
     clip_list = []
     for index, clip_slot in enumerate(track.clip_slots):
         if clip_slot.clip:
@@ -41,8 +39,9 @@ def get_single_track(request: Request):
 
     track_dict = {
         "trackIndex": track_index,
-        "trackName": track_name,
+        "trackName": track.name,
         "clipList": clip_list,
+        "muteStatus": track.mute,
     }
     return json.dumps(track_dict)
 
@@ -55,7 +54,7 @@ def update_track(request: Request):
     track_index = request.path_params["track_index"]
     track = request.ableton_song.tracks[track_index]
     track.mute = update_object["muteStatus"]
-    return f"Mute status changed to {update_object['muteStatus']}"
+    return f"Updated track {track_index} with mute status {update_object['muteStatus']}"
 
 
 @app.get("/api/track/launch")

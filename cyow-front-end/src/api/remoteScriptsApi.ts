@@ -50,7 +50,8 @@ export const remoteScriptsApi = createApi({
             query: (options) => ({
                 url: `/track/${options.trackIndex}`,
                 method: 'PATCH',
-                body: options.update
+                body: options.update,
+                responseHandler: (response) => response.status === 200 ? response.text() : response.json(),
             }),
             invalidatesTags: (result, error, arg) => [{ type: 'Track' as const, id: arg.trackIndex }]
         })

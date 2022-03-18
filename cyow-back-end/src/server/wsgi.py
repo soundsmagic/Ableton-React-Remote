@@ -9,7 +9,7 @@ class WSGIRequest:
     http_method: str = ""
     path: str = ""
     headers: List[Tuple[str, str]] = field(default_factory=lambda: [])
-    body: BytesIO = BytesIO()
+    body: BytesIO = field(default_factory=lambda: BytesIO())
 
     def to_environ(self):
         path_parts = self.path.split("?")
@@ -39,7 +39,7 @@ class WSGIRequest:
 class WSGIResponse:
     status: str = ""
     headers: List[Tuple[str, str]] = field(default_factory=lambda: [])
-    body: BytesIO = BytesIO()
+    body: BytesIO = field(default_factory=lambda: BytesIO())
     is_sent: bool = False
 
     def start_response(self, status: str, headers: List[Tuple[str, str]]):
