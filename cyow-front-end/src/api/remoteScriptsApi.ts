@@ -26,7 +26,10 @@ export const remoteScriptsApi = createApi({
             providesTags: (result, error, arg) => [{ type: 'Scene' as const, id: arg }]
         }),
         launchScene: builder.query<void, number>({
-            query: (sceneIndex) => ({ url: `/scene/${sceneIndex}/launch` })
+            query: (sceneIndex) => ({
+                url: `/scene/${sceneIndex}/launch`,
+                responseHandler: (response) => response.status === 200 ? response.text() : response.json()
+            })
         }),
         getTracks: builder.query<number[] | null, void>({
             query: () => ({ url: '/tracks', responseHandler: (response) => response.status === 200 ? response.text() : response.json() }),
@@ -70,5 +73,6 @@ export const {
     useGetTracksQuery,
     useGetSingleTrackQuery,
     useLazyLaunchClipQuery,
-    useToggleMuteMutation
+    useToggleMuteMutation,
+    useLazyLaunchSceneQuery
 } = remoteScriptsApi;

@@ -57,6 +57,14 @@ def update_track(request: Request):
     return f"Updated track {track_index} with mute status {update_object['muteStatus']}"
 
 
+@app.get("/api/scene/launch")
+def launch_scene(request: Request):
+    scene_index = request.path_params["scene_index"]
+    scene = request.ableton_song.scenes[scene_index]
+    scene.fire()
+    return f"Fired scene {scene.name}"
+
+
 @app.get("/api/track/launch")
 def launch_clip(request: Request):
     return f"Called launch clip with index {request.path_params['clip_index']} on track {request.path_params['track_index']}"

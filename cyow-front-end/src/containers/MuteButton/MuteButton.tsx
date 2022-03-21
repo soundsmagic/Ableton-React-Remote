@@ -2,7 +2,7 @@ import { StyledMuteButton } from './styled';
 
 interface MuteButtonProps {
     muteStatus: boolean,
-    onClick: () => any
+    onClick: () => void
 }
 
 export const MuteButton = ({ muteStatus, onClick }: MuteButtonProps) => {

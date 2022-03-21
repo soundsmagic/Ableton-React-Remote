@@ -7,10 +7,7 @@ export const SingleTrack = ({ trackIndex }: { trackIndex: number }) => {
     const { data: track, error, isLoading } = useGetSingleTrackQuery(trackIndex);
     const [toggleMute] = useToggleMuteMutation();
     const muteToggleHandler = () => {
-        // Indexera från 1??
-        console.log('Entered muteTogglehandler')
         if (track !== undefined) {
-            console.log(`Entered if statement with track info: Index - ${track.trackIndex}, mutestatus - ${track.muteStatus}`)
             toggleMute({
                 trackIndex: track.trackIndex,
                 update: { muteStatus: !track.muteStatus }
@@ -25,7 +22,6 @@ export const SingleTrack = ({ trackIndex }: { trackIndex: number }) => {
                 clipIndex: index
             });
         }
-        return null
     }
     return (
         <>
