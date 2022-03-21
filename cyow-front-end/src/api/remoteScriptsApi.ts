@@ -41,7 +41,10 @@ export const remoteScriptsApi = createApi({
         }),
         getSingleTrack: builder.query<Track, number>({
             query: (trackIndex) => ({ url: `/track/${trackIndex}` }),
-            providesTags: (result, error, arg) => [{ type: 'Track' as const, id: arg }]
+            providesTags: (result, error, arg) => {
+                // No idea why track index 0 won't work when all other tracks are updating correctly, but incrementing all indexes solved this for now
+                return [{ type: 'Track' as const, id: arg + 1 }]
+            }
         }),
         launchClip: builder.query<void, ClipParams>({
             query: (options) => ({ url: `/track/${options.trackIndex}/${options.clipIndex}/launch` })
@@ -53,7 +56,9 @@ export const remoteScriptsApi = createApi({
                 body: options.update,
                 responseHandler: (response) => response.status === 200 ? response.text() : response.json(),
             }),
-            invalidatesTags: (result, error, arg) => [{ type: 'Track' as const, id: arg.trackIndex }]
+            invalidatesTags: (result, error, arg) => {
+                return [{ type: 'Track' as const, id: arg.trackIndex + 1 }]
+            }
         })
     })
 })
