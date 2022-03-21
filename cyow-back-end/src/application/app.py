@@ -67,4 +67,12 @@ def launch_scene(request: Request):
 
 @app.get("/api/track/launch")
 def launch_clip(request: Request):
-    return f"Called launch clip with index {request.path_params['clip_index']} on track {request.path_params['track_index']}"
+    track_index = request.path_params["track_index"]
+    clip_index = request.path_params["clip_index"]
+    track = request.ableton_song.tracks[track_index]
+    clip_slot = track.clip_slots[clip_index]
+    if clip_slot.has_clip:
+        clip_slot.clip.fire()
+        return f"Fire clip {clip_slot.clip.name} on track {track.name}"
+    else:
+        return "No clip fired."

@@ -50,7 +50,10 @@ export const remoteScriptsApi = createApi({
             }
         }),
         launchClip: builder.query<void, ClipParams>({
-            query: (options) => ({ url: `/track/${options.trackIndex}/${options.clipIndex}/launch` })
+            query: (options) => ({
+                url: `/track/${options.trackIndex}/${options.clipIndex}/launch`,
+                responseHandler: (response) => response.status === 200 ? response.text() : response.json(),
+            })
         }),
         toggleMute: builder.mutation<void, TrackUpdateMutation>({
             query: (options) => ({
