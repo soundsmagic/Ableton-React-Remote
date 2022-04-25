@@ -26,4 +26,5 @@ export interface TrackUpdateMutation {
         trackName?: string,
         muteStatus?: boolean
     }
+    id: string
 }

@@ -12,7 +12,7 @@ export const SingleScene = ({ sceneIndex }: { sceneIndex: number }) => {
     return (
         <>
             {isLoading && <div>Loading...</div>}
-            {error && <div>Something went wrong!</div>}
+            {error && <div>E: {JSON.stringify(error)}</div>}
             {(!(isLoading && error) && scene) &&
                 <StyledSingleScene>
                     <span onClick={onClickHandler}>{scene.sceneName}</span>

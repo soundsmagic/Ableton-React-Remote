@@ -33,7 +33,7 @@ export const remoteScriptsApi = createApi({
         }),
         getTracks: builder.query<number[] | null, void>({
             query: () => ({ url: '/tracks', responseHandler: (response) => response.status === 200 ? response.text() : response.json() }),
-            // Same as for scenes above.
+            // Same as for getScenes above.
             transformResponse: response => {
                 if (typeof (response) === 'string') {
                     const numberOfTracks = parseInt(response);
@@ -59,6 +59,7 @@ export const remoteScriptsApi = createApi({
             query: (options) => ({
                 url: `/track/${options.trackIndex}`,
                 method: 'PATCH',
+                headers: { 'x-request-id': `Toggle Mute: ${options.id}`, 'x-timestamp-sent': `${Date.now()}` },
                 body: options.update,
                 responseHandler: (response) => response.status === 200 ? response.text() : response.json(),
             }),

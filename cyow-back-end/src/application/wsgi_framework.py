@@ -53,7 +53,14 @@ class WSGIApplication:
                 body = b"Resource not found."
         else:
             status = "200 OK"
-            headers = [("Content-Type", "text/plain")]
+            headers = (
+                [
+                    ("Content-type", "text/plain"),
+                    ("x-request-id", request.headers["x-request-id"]),
+                ]
+                if "x-request-id" in request.headers
+                else [("Content-Type", "text/plain")]
+            )
             body = func(request=request).encode("utf-8")
         start_response(status, headers)
         return [body]
