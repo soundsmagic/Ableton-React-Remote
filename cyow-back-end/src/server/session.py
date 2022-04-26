@@ -33,12 +33,12 @@ class Session:
         self.request.path = url.decode("utf-8")
 
     def on_header(self, name: bytes, value: bytes):
-        if name == b"x-request-id":
-            self.log_message(f"\n\nReceived header: ({name}, {value})\n")
-        if name == b"x-timestamp-sent":
-            self.log_message(
-                f"\n\nReceived header: ({name}, {value})\nTimestamp: {datetime.timestamp(datetime.now())}\n"
-            )
+        # if name == b"x-request-id":
+        #     self.log_message(f"\n\nReceived header: ({name}, {value})\n")
+        # if name == b"x-timestamp-sent":
+        #     self.log_message(
+        #         f"\n\nReceived header: ({name}, {value})\nTimestamp: {datetime.timestamp(datetime.now())}\n"
+        #     )
         self.request.headers.append((name.decode("utf-8"), value.decode("utf-8")))
 
     def on_body(self, body: bytes):
@@ -46,16 +46,16 @@ class Session:
         self.request.body.seek(0)
 
     def on_message_complete(self):
-        # self.log_message(
-        #     f"Some cool research: {self.ableton_song.tracks[0].clip_slots.__len__()}"
-        # )
         environ = self.request.to_environ()
+        self.log_message(
+            f"\nReceived request:\nMethod: {environ['REQUEST_METHOD']}\nPath: {environ['PATH_INFO']}"
+        )
         body_chunks = app(environ, self.response.start_response, self.ableton_song)
         self.response.body = b"".join(body_chunks)
         # self.log_message(
         #     f"App callable has returned with status {self.response.status}."
         # )
-        self.log_message(
-            f"\n\nSending headers: \n{self.response.headers}\nTimestamp: {datetime.timestamp(datetime.now())}\n"
-        )
+        # self.log_message(
+        #     f"\n\nSending headers: \n{self.response.headers}\nTimestamp: {datetime.timestamp(datetime.now())}\n"
+        # )
         self.client_socket.send(self.response.to_http())
