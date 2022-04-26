@@ -43,7 +43,6 @@ class WSGIResponse:
     is_sent: bool = False
 
     def start_response(self, status: str, headers: List[Tuple[str, str]]):
-        print("Start response with", status, headers)
         self.status = status
         self.headers = headers
 

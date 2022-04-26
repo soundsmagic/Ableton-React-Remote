@@ -10,7 +10,14 @@ export const TracksContainer = () => {
             {error && <pre style={{ 'wordBreak': 'break-word' }}>{JSON.stringify(error, undefined, 2)}</pre>}
             {data && !isLoading && !error &&
                 <StyledTracksContainer>
-                    {data.map((item) => <SingleTrack key={item} trackIndex={item} />)}
+                    {data.map(track =>
+                        <SingleTrack
+                            key={track.trackIndex}
+                            trackIndex={track.trackIndex}
+                            trackName={track.trackName}
+                            clipList={track.clipList}
+                            muteStatus={track.muteStatus}
+                        />)}
                 </StyledTracksContainer>
             }
         </>

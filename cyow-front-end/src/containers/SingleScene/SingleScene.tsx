@@ -1,24 +1,15 @@
-import { useGetSingleSceneQuery, useLazyLaunchSceneQuery } from '../../api/remoteScriptsApi';
+import { useLazyLaunchSceneQuery } from '../../api/remoteScriptsApi';
+import { Scene } from '../../types/types';
 import { StyledSingleScene } from './styled';
 
-export const SingleScene = ({ sceneIndex }: { sceneIndex: number }) => {
-    const { data: scene, error, isLoading } = useGetSingleSceneQuery(sceneIndex);
+export const SingleScene = ({ sceneIndex, sceneName }: Scene) => {
     const [launchScene] = useLazyLaunchSceneQuery();
     const onClickHandler = () => {
-        if (scene) {
-            launchScene(scene.sceneIndex);
-        }
+        launchScene(sceneIndex);
     };
     return (
-        <>
-            {isLoading && <div>Loading...</div>}
-            {error && <div>E: {JSON.stringify(error)}</div>}
-            {(!(isLoading && error) && scene) &&
-                <StyledSingleScene>
-                    <span onClick={onClickHandler}>{scene.sceneName}</span>
-                </StyledSingleScene>
-            }
-        </>
-
+        <StyledSingleScene>
+            <span onClick={onClickHandler}>{sceneName ? sceneName : sceneIndex + 1}</span>
+        </StyledSingleScene>
     );
 };

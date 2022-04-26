@@ -5,56 +5,68 @@ app = WSGIApplication()
 
 
 @app.get("/api/scenes")
-def get_scenes(request: Request) -> str:
-    return str(request.ableton_song.scenes.__len__())
+def get_scenes(request: Request):
+    scene_list = []
+    for index, scene in enumerate(request.ableton_song.scenes):
+        scene_list.append(
+            {"sceneIndex": index, "sceneName": request.ableton_song.scenes[index].name}
+        )
+    return json.dumps(scene_list)
 
 
 @app.get("/api/tracks")
-def get_tracks(request: Request) -> str:
-    return str(request.ableton_song.tracks.__len__())
+def get_tracks(request: Request):
+    track_list = []
+    for trackIndex, track in enumerate(request.ableton_song.tracks):
+        clip_list = []
+        for clipIndex, clip_slot in enumerate(track.clip_slots):
+            if clip_slot.clip:
+                clip_list.append(
+                    {
+                        "clipIndex": clipIndex,
+                        "clipName": track.clip_slots[clipIndex].clip.name,
+                    }
+                )
+            else:
+                clip_list.append(None)
+
+        track_list.append(
+            {
+                "trackIndex": trackIndex,
+                "trackName": track.name,
+                "clipList": clip_list,
+                "muteStatus": track.mute,
+            }
+        )
+    return json.dumps(track_list)
 
 
 # In reality the following routes contain path parameters, which get filtered and added to the request dictionary in the WSGI server.
-@app.get("/api/scene")
-def get_single_scene(request: Request):
-    scene_index = request.path_params["scene_index"]
-    scene_name = request.ableton_song.scenes[scene_index].name
-    scene_dict = {"sceneIndex": scene_index, "sceneName": scene_name}
-    return json.dumps(scene_dict)
-
-
-@app.get("/api/track")
-def get_single_track(request: Request):
-    track_index = request.path_params["track_index"]
-    track = request.ableton_song.tracks[track_index]
-
-    clip_list = []
-    for index, clip_slot in enumerate(track.clip_slots):
-        if clip_slot.clip:
-            clip_list.append(
-                {"clipIndex": index, "clipName": track.clip_slots[index].clip.name}
-            )
-        else:
-            clip_list.append(None)
-
-    track_dict = {
-        "trackIndex": track_index,
-        "trackName": track.name,
-        "clipList": clip_list,
-        "muteStatus": track.mute,
-    }
-    return json.dumps(track_dict)
-
-
 @app.patch("/api/track")
 def update_track(request: Request):
     update_body = request.body.decode("utf-8")
     update_object = json.loads(update_body)
 
-    track_index = request.path_params["track_index"]
-    track = request.ableton_song.tracks[track_index]
+    requested_track_index = request.path_params["track_index"]
+    track = request.ableton_song.tracks[requested_track_index]
     track.mute = update_object["muteStatus"]
-    return f"Updated track {track_index} with mute status {update_object['muteStatus']}"
+
+    clip_list = []
+    for clipIndex, clip_slot in enumerate(track.clip_slots):
+        if clip_slot.clip:
+            clip_list.append(
+                {"clipIndex": clipIndex, "clipName": track.clip_slots[clipIndex].clip.name}
+            )
+        else:
+            clip_list.append(None)
+
+    track_dict = {
+        "trackIndex": requested_track_index,
+        "trackName": track.name,
+        "clipList": clip_list,
+        "muteStatus": track.mute,
+    }
+    return json.dumps(track_dict)
 
 
 @app.get("/api/scene/launch")
