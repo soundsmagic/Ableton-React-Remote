@@ -10,14 +10,14 @@ export const SingleTrack = ({ trackIndex, trackName, clipList, muteStatus, soloS
     const muteToggleHandler = () => {
         toggleMute({
             trackIndex,
-            update: { muteStatus: !muteStatus },
+            update: { muteStatus: !muteMutationData?.muteStatus },
         });
     };
     const [toggleSolo, { data: soloMutationData }] = useToggleSoloMutation();
     const soloToggleHandler = () => {
         toggleSolo({
             trackIndex,
-            update: { soloStatus: !soloStatus },
+            update: { soloStatus: !soloMutationData?.soloStatus },
         });
     };
     const [launchClip] = useLazyLaunchClipQuery();

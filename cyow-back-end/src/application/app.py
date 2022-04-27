@@ -50,9 +50,9 @@ def update_track(request: Request):
 
     requested_track_index = request.path_params["track_index"]
     track = request.ableton_song.tracks[requested_track_index]
-    if update_object["muteStatus"]:
+    if "muteStatus" in update_object:
         track.mute = update_object["muteStatus"]
-    elif update_object["soloStatus"]:
+    elif "soloStatus" in update_object:
         track.solo = update_object["soloStatus"]
 
     clip_list = []
@@ -72,6 +72,7 @@ def update_track(request: Request):
         "trackName": track.name,
         "clipList": clip_list,
         "muteStatus": track.mute,
+        "soloStatus": track.solo,
     }
     return json.dumps(track_dict)
 

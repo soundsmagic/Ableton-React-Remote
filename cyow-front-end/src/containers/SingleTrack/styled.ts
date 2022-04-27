@@ -8,6 +8,7 @@ export const StyledSingleTrack = styled.div`
     border-radius: ${({ theme }) => theme.boundaries.mainBorderRadius};
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
 `;
 
 export const StyledTrackHeader = styled.div`
