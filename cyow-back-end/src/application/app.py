@@ -55,7 +55,10 @@ def update_track(request: Request):
     for clipIndex, clip_slot in enumerate(track.clip_slots):
         if clip_slot.clip:
             clip_list.append(
-                {"clipIndex": clipIndex, "clipName": track.clip_slots[clipIndex].clip.name}
+                {
+                    "clipIndex": clipIndex,
+                    "clipName": track.clip_slots[clipIndex].clip.name,
+                }
             )
         else:
             clip_list.append(None)

@@ -13,10 +13,10 @@ export const SingleTrack = ({ trackIndex, trackName, clipList, muteStatus }: Tra
         });
     };
     const [launchClip] = useLazyLaunchClipQuery();
-    const clipLaunchHandler = (index: number) => {
+    const clipLaunchHandler = (clipIndex: number) => {
         launchClip({
             trackIndex,
-            clipIndex: index
+            clipIndex
         });
     }
     return (
