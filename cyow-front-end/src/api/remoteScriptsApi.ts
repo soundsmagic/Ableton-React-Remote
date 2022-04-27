@@ -34,6 +34,13 @@ export const remoteScriptsApi = createApi({
                 method: 'PATCH',
                 body: options.update,
             }),
+        }),
+        toggleSolo: builder.mutation<Track, TrackUpdateMutation>({
+            query: (options) => ({
+                url: `/track/${options.trackIndex}`,
+                method: 'PATCH',
+                body: options.update,
+            }),
         })
     })
 })
@@ -44,5 +51,6 @@ export const {
     useGetTracksQuery,
     useLazyLaunchClipQuery,
     useToggleMuteMutation,
+    useToggleSoloMutation,
     useLazyLaunchSceneQuery
 } = remoteScriptsApi;

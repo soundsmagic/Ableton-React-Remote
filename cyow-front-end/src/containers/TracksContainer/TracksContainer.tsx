@@ -17,6 +17,7 @@ export const TracksContainer = () => {
                             trackName={track.trackName}
                             clipList={track.clipList}
                             muteStatus={track.muteStatus}
+                            soloStatus={track.soloStatus}
                         />)}
                 </StyledTracksContainer>
             }

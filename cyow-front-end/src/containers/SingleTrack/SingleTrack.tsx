@@ -1,15 +1,23 @@
 import { ClipContainer } from '../ClipContainer/ClipContainer';
 import { MuteButton } from '../MuteButton/MuteButton';
 import { StyledSingleTrack, StyledTrackHeader } from './styled';
-import { useLazyLaunchClipQuery, useToggleMuteMutation } from '../../api/remoteScriptsApi';
+import { useLazyLaunchClipQuery, useToggleMuteMutation, useToggleSoloMutation } from '../../api/remoteScriptsApi';
 import { Track } from '../../types/types';
+import { SoloButton } from '../SoloButton/SoloButton';
 
-export const SingleTrack = ({ trackIndex, trackName, clipList, muteStatus }: Track) => {
-    const [toggleMute, { data }] = useToggleMuteMutation();
+export const SingleTrack = ({ trackIndex, trackName, clipList, muteStatus, soloStatus }: Track) => {
+    const [toggleMute, { data: muteMutationData }] = useToggleMuteMutation();
     const muteToggleHandler = () => {
         toggleMute({
             trackIndex,
             update: { muteStatus: !muteStatus },
+        });
+    };
+    const [toggleSolo, { data: soloMutationData }] = useToggleSoloMutation();
+    const soloToggleHandler = () => {
+        toggleSolo({
+            trackIndex,
+            update: { soloStatus: !soloStatus },
         });
     };
     const [launchClip] = useLazyLaunchClipQuery();
@@ -23,7 +31,8 @@ export const SingleTrack = ({ trackIndex, trackName, clipList, muteStatus }: Tra
         <StyledSingleTrack>
             <StyledTrackHeader><span>{trackName}</span></StyledTrackHeader>
             <ClipContainer clipList={clipList} clipLaunchHandler={clipLaunchHandler} />
-            <MuteButton muteStatus={data ? data.muteStatus : muteStatus} onClick={muteToggleHandler} />
+            <SoloButton soloStatus={soloMutationData ? soloMutationData.soloStatus : soloStatus} onClick={soloToggleHandler} />
+            <MuteButton muteStatus={muteMutationData ? muteMutationData.muteStatus : muteStatus} onClick={muteToggleHandler} />
         </StyledSingleTrack>
     );
 };

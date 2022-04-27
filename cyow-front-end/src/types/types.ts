@@ -12,7 +12,8 @@ export interface Track {
     trackIndex: number,
     trackName: string,
     clipList: Clip[],
-    muteStatus: boolean
+    muteStatus: boolean,
+    soloStatus: boolean
 }
 
 export interface ClipParams {
@@ -24,6 +25,7 @@ export interface TrackUpdateMutation {
     trackIndex: number,
     update: {
         trackName?: string,
-        muteStatus?: boolean
+        muteStatus?: boolean,
+        soloStatus?: boolean
     }
 }

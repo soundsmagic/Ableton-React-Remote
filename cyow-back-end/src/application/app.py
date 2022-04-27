@@ -36,6 +36,7 @@ def get_tracks(request: Request):
                 "trackName": track.name,
                 "clipList": clip_list,
                 "muteStatus": track.mute,
+                "soloStatus": track.solo,
             }
         )
     return json.dumps(track_list)
@@ -49,7 +50,10 @@ def update_track(request: Request):
 
     requested_track_index = request.path_params["track_index"]
     track = request.ableton_song.tracks[requested_track_index]
-    track.mute = update_object["muteStatus"]
+    if update_object["muteStatus"]:
+        track.mute = update_object["muteStatus"]
+    elif update_object["soloStatus"]:
+        track.solo = update_object["soloStatus"]
 
     clip_list = []
     for clipIndex, clip_slot in enumerate(track.clip_slots):
