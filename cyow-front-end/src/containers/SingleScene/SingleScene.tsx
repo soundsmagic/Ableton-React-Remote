@@ -8,8 +8,8 @@ export const SingleScene = ({ sceneIndex, sceneName }: Scene) => {
         launchScene(sceneIndex);
     };
     return (
-        <StyledSingleScene>
-            <span onClick={onClickHandler}>{sceneName ? sceneName : sceneIndex + 1}</span>
+        <StyledSingleScene onClick={onClickHandler}>
+            <span>{sceneName ? sceneName : sceneIndex + 1}</span>
         </StyledSingleScene>
     );
 };
