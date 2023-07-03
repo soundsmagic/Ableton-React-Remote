@@ -1,12 +1,12 @@
-import Slider from 'rc-slider';
 import { useChangeTrackSendValueMutation } from '../../api/remoteScriptsApi';
+import { StyledSlider, StyledThumb, StyledTrack } from './styled';
 
 interface Props {
   trackIndex: number;
   sendIndex: string;
 }
 
-type ChangeHandler = (value: number | number[]) => void;
+type ChangeHandler = (value: number | readonly number[], index: number) => void;
 
 export const VerticalSlider = ({ trackIndex, sendIndex }: Props) => {
   const [changeTrackSendValue] = useChangeTrackSendValueMutation();
@@ -19,10 +19,12 @@ export const VerticalSlider = ({ trackIndex, sendIndex }: Props) => {
   };
 
   return (
-    <Slider
-      trackStyle={{ backgroundColor: 'black', height: 10 }}
-      railStyle={{ backgroundColor: 'lightblue', height: 10 }}
+    <StyledSlider
       onAfterChange={afterChangeHandler}
+      orientation="vertical"
+      invert={true}
+      renderThumb={(props, state) => <StyledThumb />}
+      renderTrack={(props, state) => <StyledTrack />}
     />
   );
 };
