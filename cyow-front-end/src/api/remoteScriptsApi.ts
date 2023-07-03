@@ -14,21 +14,24 @@ export const remoteScriptsApi = createApi({
     getTracks: builder.query<Track[] | null, void>({
       query: () => ({ url: '/tracks' }),
     }),
+    changeTrackSendValue: builder.mutation<Track, TrackUpdateMutation>({
+      query: trackUpdateQuery,
+    }),
     toggleMute: builder.mutation<Track, TrackUpdateMutation>({
-      query: (options) => ({
-        url: `/track/${options.trackIndex}`,
-        method: 'PATCH',
-        body: options.update,
-      }),
+      query: trackUpdateQuery,
     }),
     toggleSolo: builder.mutation<Track, TrackUpdateMutation>({
-      query: (options) => ({
-        url: `/track/${options.trackIndex}`,
-        method: 'PATCH',
-        body: options.update,
-      }),
+      query: trackUpdateQuery,
     }),
   }),
 });
 
-export const { useGetTracksQuery, useToggleMuteMutation, useToggleSoloMutation } = remoteScriptsApi;
+function trackUpdateQuery(options: TrackUpdateMutation) {
+  return {
+    url: `/track/${options.trackIndex}`,
+    method: 'PATCH',
+    body: options.update,
+  };
+}
+
+export const { useGetTracksQuery, useChangeTrackSendValueMutation, useToggleMuteMutation, useToggleSoloMutation } = remoteScriptsApi;
