@@ -9,7 +9,7 @@ export const remoteScriptsApi = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Scene', 'Track'],
+  tagTypes: ['Track'],
   endpoints: (builder) => ({
     getTracks: builder.query<Track[] | null, void>({
       query: () => ({ url: '/tracks' }),

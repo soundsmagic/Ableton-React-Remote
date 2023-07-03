@@ -3,8 +3,8 @@ import { mockTrackList } from './mockData';
 // import { Scene, Track } from '../types/types';
 
 export const handlers = [
-  rest.get('api/tracks', (req, res, ctx) => {
-    return res(ctx.status(200), ctx.json(mockTrackList.map((item) => item.trackIndex)));
+  rest.get('/api/tracks', (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json(mockTrackList));
   }),
   // rest.get<null, Record<string, string>, Track>('api/track/:trackIndex', (req, res, ctx) => {
   //     const { trackIndex } = req.params;
