@@ -3,6 +3,7 @@ import { StyledSingleTrack, StyledTrackHeader } from './styled';
 import { useToggleMuteMutation, useToggleSoloMutation } from '../../api/remoteScriptsApi';
 import { Track } from '../../types/types';
 import { SoloButton } from '../SoloButton/SoloButton';
+import { VerticalSlider } from '../VerticalSlider/VerticalSlider';
 
 export const SingleTrack = ({ trackIndex, trackName, muteStatus, soloStatus }: Track) => {
   const [toggleMute, { data: muteMutationData }] = useToggleMuteMutation();
@@ -25,6 +26,7 @@ export const SingleTrack = ({ trackIndex, trackName, muteStatus, soloStatus }: T
       <StyledTrackHeader>
         <span>{trackName}</span>
       </StyledTrackHeader>
+      <VerticalSlider trackIndex={trackIndex} sendIndex="A" />
       <SoloButton soloStatus={soloMutationData ? soloMutationData.soloStatus : soloStatus} onClick={soloToggleHandler} />
       <MuteButton muteStatus={muteMutationData ? muteMutationData.muteStatus : muteStatus} onClick={muteToggleHandler} />
     </StyledSingleTrack>

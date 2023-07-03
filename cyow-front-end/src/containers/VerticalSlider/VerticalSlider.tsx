@@ -18,5 +18,11 @@ export const VerticalSlider = ({ trackIndex, sendIndex }: Props) => {
     });
   };
 
-  return <Slider vertical={true} onAfterChange={afterChangeHandler} />;
+  return (
+    <Slider
+      trackStyle={{ backgroundColor: 'black', height: 10 }}
+      railStyle={{ backgroundColor: 'lightblue', height: 10 }}
+      onAfterChange={afterChangeHandler}
+    />
+  );
 };
