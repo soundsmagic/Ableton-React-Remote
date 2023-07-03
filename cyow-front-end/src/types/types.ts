@@ -11,5 +11,11 @@ export interface TrackUpdateMutation {
     trackName?: string;
     muteStatus?: boolean;
     soloStatus?: boolean;
+    sendValue?: TrackSendValue;
   };
+}
+
+export interface TrackSendValue {
+  sendIndex: string;
+  value: number;
 }
